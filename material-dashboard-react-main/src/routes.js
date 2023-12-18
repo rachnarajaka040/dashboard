@@ -44,9 +44,32 @@ import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import AgentTables from "./layouts/agenttable";
 // @mui icons
 import Icon from "@mui/material/Icon";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import CancelIcon from "@mui/icons-material/Cancel";
+import AgentCancelRequestDropdown from "layouts/AgentCancelRequestDropdown";
+import UserCancelRequestDropdown from "./layouts/UserCancelRequestDropdown";
+import FlightTables from "./layouts/flighttable";
+import HotelTables from "layouts/hoteltable";
+import BusTables from "layouts/bustable";
+import UserChangeRequest from "layouts/UserChangeRequest";
+import AgentChangeRequest from "layouts/AgentChangeRequest";
+import AgentCancelRequest from "layouts/agentcancelrequest";
+import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import EditIcon from "@mui/icons-material/Edit";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import UserBookings from "layouts/UserBookings";
+import AgentsBookings from "layouts/AgentsBookings";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import { FaCcVisa } from "react-icons/fa";
+import { IoIosList } from "react-icons/io";
+import { MdFlightTakeoff } from "react-icons/md";
+import ScheduleIcon from "@mui/icons-material/Schedule";
 
 const routes = [
   {
@@ -63,6 +86,127 @@ const routes = [
     key: "tables",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/tables",
+    component: <Tables />,
+  },
+  {
+    type: "collapse",
+    name: "Agent Request",
+    key: "agent",
+    icon: <PeopleOutlineIcon fontSize="small" />,
+    route: "/tableses",
+    component: <AgentTables />,
+  },
+  {
+    type: "collapse",
+    name: <AgentCancelRequestDropdown />,
+    key: "tables",
+    icon: <CancelIcon fontSize="small" />,
+  },
+  {
+    type: "collapse",
+    name: <UserCancelRequestDropdown />,
+    key: "users",
+    icon: <CancelIcon fontSize="small" />,
+  },
+  {
+    type: "collapse",
+    name: <UserChangeRequest />,
+    key: "users",
+    icon: <ChangeCircleIcon fontSize="small" />,
+  },
+  {
+    type: "collapse",
+    name: <AgentChangeRequest />,
+    key: "users",
+    icon: <ChangeCircleIcon fontSize="small" />,
+  },
+  {
+    type: "collapse",
+    name: <UserBookings />,
+    key: "booking",
+    icon: <EventNoteIcon fontSize="small" />,
+  },
+  {
+    type: "collapse",
+    name: <AgentsBookings />,
+    key: "booking",
+    icon: <EventNoteIcon fontSize="small" />,
+  },
+  {
+    type: "collapse",
+    name: "Visa Request",
+    key: "visa",
+    icon: <FaCcVisa size={17}>table_view</FaCcVisa>,
+    route: "/tables",
+    component: <Tables />,
+  },
+  {
+    type: "collapse",
+    name: "OfferList",
+    key: "offerlist",
+    icon: <IoIosList size={20}>table_view</IoIosList>,
+    route: "/tables",
+    component: <Tables />,
+  },
+  {
+    type: "collapse",
+    name: "Fixed Departure",
+    key: "fixed",
+    icon: <MdFlightTakeoff size={20}>table_view</MdFlightTakeoff>,
+    route: "/tables",
+    component: <Tables />,
+  },
+  {
+    type: "collapse",
+    name: "Fixed Departure Control",
+    key: "control",
+    icon: <ScheduleIcon Size={20}>table_view</ScheduleIcon>,
+    route: "/tables",
+    component: <Tables />,
+  },
+  {
+    key: "flight table", // Unique key for the route
+    route: "/flighttable", // Route path for FlightTables
+    component: <FlightTables />, // FlightTables component
+  },
+  {
+    key: "hoteltable", // Unique key for the route
+    route: "/hoteltable", // Route path for FlightTables
+    component: <HotelTables />, // FlightTables component
+  },
+  {
+    key: "bustable", // Unique key for the route
+    route: "/bustable", // Route path for FlightTables
+    component: <BusTables />, // FlightTables component
+  },
+  {
+    type: "collapse",
+    name: "User Markup Amount",
+    key: "markup",
+    icon: <AccountBalanceIcon fontSize="small" />,
+    // route: "/",
+    // component: <Tables />,
+  },
+  {
+    type: "collapse",
+    name: "Edit Holiday Package",
+    key: "holiday",
+    icon: <EditIcon fontSize="small" />, // Replace with the desired icon
+    // component: <EditHolidayPackage />,
+  },
+  {
+    type: "collapse",
+    name: "Forex",
+    key: "forex",
+    icon: <MonetizationOnIcon fontSize="small" />, // Replace with the desired icon
+    // component: <Forex />,
+  },
+  {
+    type: "collapse",
+    name: "Add Subadmin",
+    key: "tables",
+    icon: <GroupAddIcon fontSize="small" />,
+    route: "/tableses",
     component: <Tables />,
   },
   {

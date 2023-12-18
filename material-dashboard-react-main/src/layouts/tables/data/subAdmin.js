@@ -50,28 +50,67 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "agents", accessor: "author", width: "30%", align: "left" },
-      { Header: "agency name", accessor: "agecncyname", width: "30%" },
-      { Header: "agency classification", accessor: "classification", align: "left", width: "40%" },
-      { Header: "agency address", accessor: "address", align: "left" },
-      { Header: "Contact Person", accessor: "person", align: "left" },
-      { Header: "status", accessor: "status", align: "center" },
-      { Header: "Provisional GSTIN", accessor: "employed", align: "center" },
+      { Header: "subadmin", accessor: "author", width: "30%", align: "left" },
       { Header: "Mobile", accessor: "mobile", align: "center" },
-      { Header: "Password", accessor: "Password", align: "center" },
-      { Header: "flight  amount", accessor: "flight", align: "center" },
-      { Header: "hotel amount", accessor: "hotel", align: "center" },
-      { Header: "bus amount", accessor: "bus", align: "center" },
-      { Header: "holiday amount", accessor: "holiday", align: "center" },
-      { Header: "Vendor amount", accessor: "vendor", align: "center" },
+      { Header: "password", accessor: "password", align: "center" },
+      { Header: "userType", accessor: "userType", align: "center" },
+      { Header: "status", accessor: "status", align: "center" },
     ],
 
     rows: [
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        mobile: <Job description="Organization" />,
+        password: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
+        status: (
+          <MDBox ml={-1}>
+            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
+          </MDBox>
+        ),
+        employed: <Job description="Organization" />,
+        mobile: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            23/04/18
+          </MDTypography>
+        ),
+        Password: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Edit
+          </MDTypography>
+        ),
+        flight: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Edit
+          </MDTypography>
+        ),
+        hotel: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Edit
+          </MDTypography>
+        ),
+        bus: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Edit
+          </MDTypography>
+        ),
+        holiday: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Edit
+          </MDTypography>
+        ),
+        vendor: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Edit
+          </MDTypography>
+        ),
+      },
+      {
+        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -117,9 +156,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -165,9 +204,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -213,9 +252,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -261,9 +300,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -309,9 +348,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -357,9 +396,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -405,9 +444,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -453,9 +492,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -501,9 +540,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -549,9 +588,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>
@@ -597,57 +636,9 @@ export default function data() {
       },
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
+        password: <Job description="Organization" />,
         classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        Password: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        flight: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
+        userType: <Job description="Organization" />,
         person: <Job description="Organization" />,
         status: (
           <MDBox ml={-1}>

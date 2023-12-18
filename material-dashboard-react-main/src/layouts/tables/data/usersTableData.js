@@ -50,20 +50,11 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "agents", accessor: "author", width: "30%", align: "left" },
-      { Header: "agency name", accessor: "agecncyname", width: "30%" },
-      { Header: "agency classification", accessor: "classification", align: "left", width: "40%" },
-      { Header: "agency address", accessor: "address", align: "left" },
-      { Header: "Contact Person", accessor: "person", align: "left" },
+      { Header: "users", accessor: "author", width: "30%", align: "left" },
       { Header: "status", accessor: "status", align: "center" },
-      { Header: "Provisional GSTIN", accessor: "employed", align: "center" },
-      { Header: "Mobile", accessor: "mobile", align: "center" },
-      { Header: "Password", accessor: "Password", align: "center" },
-      { Header: "flight  amount", accessor: "flight", align: "center" },
-      { Header: "hotel amount", accessor: "hotel", align: "center" },
-      { Header: "bus amount", accessor: "bus", align: "center" },
-      { Header: "holiday amount", accessor: "holiday", align: "center" },
-      { Header: "Vendor amount", accessor: "vendor", align: "center" },
+
+      { Header: "Date of Birth", accessor: "mobile", align: "center" },
+      { Header: "Mobile", accessor: "Password", align: "center" },
     ],
 
     rows: [

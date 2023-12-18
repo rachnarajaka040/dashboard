@@ -37,7 +37,8 @@ import themeRTL from "assets/theme/theme-rtl";
 // Material Dashboard 2 React Dark Mode themes
 import themeDark from "assets/theme-dark";
 import themeDarkRTL from "assets/theme-dark/theme-rtl";
-
+import newlogo from "assets/images/new_logo.png";
+// Images
 // RTL plugins
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
@@ -178,8 +179,17 @@ export default function App() {
         <>
           <Sidenav
             color={sidenavColor}
-            brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-            brandName="Material Dashboard 2"
+            brand={newlogo}
+            // brand={
+            //   <Avatar
+            //     src={newlogo}
+            //     sx={{
+            //       width: 109,
+            //       height: 164,
+            //     }}
+            //   />
+            // }
+
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}

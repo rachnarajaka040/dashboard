@@ -34,7 +34,9 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
-
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
+import CardTravelIcon from "@mui/icons-material/CardTravel";
+import HouseboatIcon from "@mui/icons-material/Houseboat";
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
 
@@ -47,8 +49,8 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="dark"
-                icon="weekend"
-                title="Bookings"
+                icon="flights"
+                title="Flights"
                 count={281}
                 percentage={{
                   color: "success",
@@ -61,8 +63,8 @@ function Dashboard() {
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
-                icon="leaderboard"
-                title="Today's Users"
+                icon="hotel"
+                title="Hotels"
                 count="2,300"
                 percentage={{
                   color: "success",
@@ -76,8 +78,8 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="success"
-                icon="store"
-                title="Revenue"
+                icon={<DirectionsBusIcon />}
+                title="Bus"
                 count="34k"
                 percentage={{
                   color: "success",
@@ -91,8 +93,8 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="primary"
-                icon="person_add"
-                title="Followers"
+                icon={<HouseboatIcon />}
+                title="Packages"
                 count="+91"
                 percentage={{
                   color: "success",
@@ -109,7 +111,7 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsBarChart
                   color="info"
-                  title="website views"
+                  title="Total Cancel Request"
                   description="Last Campaign Performance"
                   date="campaign sent 2 days ago"
                   chart={reportsBarChartData}
@@ -120,7 +122,7 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="success"
-                  title="daily sales"
+                  title="Total User Booking"
                   description={
                     <>
                       (<strong>+15%</strong>) increase in today sales.
@@ -135,7 +137,7 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="dark"
-                  title="completed tasks"
+                  title="Total Agent Booking"
                   description="Last Campaign Performance"
                   date="just updated"
                   chart={tasks}
