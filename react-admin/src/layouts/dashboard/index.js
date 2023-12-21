@@ -1,19 +1,6 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Grid from "@mui/material/Grid";
 
 // Material Dashboard 2 React components
@@ -37,9 +24,26 @@ import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import CardTravelIcon from "@mui/icons-material/CardTravel";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
+
+//Api base url import
+import { apiURL } from "Constants/Constant";
+
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
+  const [dashboardData, setdasboardData] = useState({});
 
+  const fetchdasboarddata = async () => {
+    try {
+      const responseData = await axios.get(`${apiURL.baseURL}/skytrails/api/admin/adminDashBoard`);
+      setdasboardData(responseData?.data?.result);
+      //console.log(dasboarddata.data.result.NoOfFlightBookings, "apiadat");
+    } catch (error) {
+      console.error("Error fetching dashboard data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchdasboarddata();
+  }, []);
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -51,7 +55,7 @@ function Dashboard() {
                 color="dark"
                 icon="flights"
                 title="Flights"
-                count={281}
+                count={dashboardData.NoOfFlightBookings}
                 percentage={{
                   color: "success",
                   amount: "+55%",
@@ -65,7 +69,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="hotel"
                 title="Hotels"
-                count="2,300"
+                count={dashboardData?.NoOfHotelBookings}
                 percentage={{
                   color: "success",
                   amount: "+3%",
@@ -80,7 +84,7 @@ function Dashboard() {
                 color="success"
                 icon={<DirectionsBusIcon />}
                 title="Bus"
-                count="34k"
+                count={dashboardData?.NoOfBusBookings}
                 percentage={{
                   color: "success",
                   amount: "+1%",

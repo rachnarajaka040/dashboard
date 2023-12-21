@@ -59,11 +59,19 @@ export default {
           url: '/dashboard/default'
         },
         {
-          id: 'dashboard2',
-          title: 'Dashboard2',
-          type: 'item',
-          icon: icons['HomeOutlinedIcon'],
-          url: '/dashboard/default'
+          id: 'auth',
+          title: 'Authentication',
+          type: 'collapse',
+          icon: icons['SecurityOutlinedIcon'],
+          children: [
+            {
+              id: 'login-1',
+              title: 'Login',
+              type: 'item',
+              url: '/',
+              target: true
+            }
+          ]
         }
       ]
     }

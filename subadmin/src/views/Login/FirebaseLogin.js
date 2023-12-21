@@ -5,7 +5,6 @@ import { useTheme } from '@mui/material/styles';
 import {
   Box,
   Button,
-  Divider,
   FormHelperText,
   Grid,
   TextField,
@@ -20,11 +19,11 @@ import {
 //  third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-
+import { Link } from 'react-router-dom';
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Google from 'assets/images/social-google.svg';
+// import Google from 'assets/images/social-google.svg';
 
 // ==============================|| FIREBASE LOGIN ||============================== //
 
@@ -42,7 +41,7 @@ const FirebaseLogin = ({ ...rest }) => {
 
   return (
     <>
-      <Grid container justifyContent="center">
+      {/* <Grid container justifyContent="center">
         <Grid item xs={12}>
           <Button
             fullWidth={true}
@@ -73,15 +72,15 @@ const FirebaseLogin = ({ ...rest }) => {
             Sign in with Google
           </Button>
         </Grid>
-      </Grid>
+      </Grid> */}
 
-      <Box alignItems="center" display="flex" mt={2}>
+      {/* <Box alignItems="center" display="flex" mt={2}>
         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
         <Typography color="textSecondary" variant="h5" sx={{ m: theme.spacing(2) }}>
           OR
         </Typography>
         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
-      </Box>
+      </Box> */}
 
       <Formik
         initialValues={{
@@ -156,9 +155,11 @@ const FirebaseLogin = ({ ...rest }) => {
             )}
 
             <Box mt={2}>
-              <Button color="primary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
-                Log In
-              </Button>
+              <Link to="/subadmin">
+                <Button color="primary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
+                  Log In
+                </Button>
+              </Link>
             </Box>
           </form>
         )}

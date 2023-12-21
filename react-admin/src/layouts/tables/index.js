@@ -58,7 +58,7 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Agent Table
+                  User Table
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>
@@ -85,7 +85,7 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Users Table
+                  Agent Table
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>
