@@ -136,6 +136,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
         {" "}
         <NotificationItem icon={<Icon>group_add</Icon>} title="Add Event" />
       </Link>
+      <Link to="/authentication/addadvertisement">
+        {" "}
+        <NotificationItem icon={<Icon>group_add</Icon>} title="Add Addvertisement" />
+      </Link>
 
       <NotificationItem icon={<Icon>account_circle</Icon>} title="My Account" />
       <Link to="/adminlogin">

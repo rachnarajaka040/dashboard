@@ -97,11 +97,11 @@ export default function data() {
           {data.agency_details.agency_name}
         </MDTypography>
       ),
-      classification: (
-        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data.agency_gst_details.agency_classification}
-        </MDTypography>
-      ),
+      // classification: (
+      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+      //     {data.agency_gst_details.agency_classification}
+      //   </MDTypography>
+      // ),
       address: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
           {data.agency_details.address}

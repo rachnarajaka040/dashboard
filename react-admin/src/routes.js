@@ -80,6 +80,24 @@ import FixedDeparture from "layouts/authentication/fixed-Departure/FixedDepartur
 import SubAdmin from "layouts/authentication/sub-admin";
 import Admin from "layouts/authentication/admin";
 import Event from "layouts/authentication/event";
+//import BusCancel from "layouts/agentbuscanceltable";
+import AgentFlightCancel from "layouts/agentflightcanceltable";
+import AgentHotelCancel from "layouts/agenthotelcanceltable";
+import AgentbusCancel from "layouts/agentbuscanceltable";
+import UserBusCancel from "layouts/userbuscanceltable";
+import UserFlightCancel from "layouts/userflightcanceltable";
+import UserHotelCancel from "layouts/userhotelcanceltable";
+import UserBusBooking from "layouts/userbusBooking";
+import UserHotelBooking from "layouts/userhotelBooking";
+import AgentBusBooking from "layouts/agentbusBooking";
+import AgentFlightBooking from "layouts/agentflightBooking";
+import AgentHotelBooking from "layouts/agenthotelBooking";
+import UserFlightBooking from "layouts/userflightBooking";
+import VisaRequest from "layouts/visa request";
+import FixedDepartureControl from "layouts/fixedDepartureControl";
+import AddvertiseMent from "layouts/advertisement";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import AddvertiseMentForm from "layouts/authentication/add-addvertisement";
 const routes = [
   {
     type: "collapse",
@@ -111,6 +129,7 @@ const routes = [
     key: "tables",
     icon: <CancelIcon fontSize="small" />,
   },
+
   {
     type: "collapse",
     name: <UserCancelRequestDropdown />,
@@ -146,8 +165,8 @@ const routes = [
     name: "Visa Request",
     key: "visa",
     icon: <FaCcVisa size={17}>table_view</FaCcVisa>,
-    route: "/tables",
-    component: <Tables />,
+    route: "/visarequest",
+    component: <VisaRequest />,
   },
   {
     type: "collapse",
@@ -170,13 +189,21 @@ const routes = [
     name: "Fixed Departure Control",
     key: "control",
     icon: <ScheduleIcon Size={20}>table_view</ScheduleIcon>,
-    route: "/tables",
-    component: <Tables />,
+    route: "/fixeddeparturecontrol",
+    component: <FixedDepartureControl />,
+  },
+  {
+    type: "collapse",
+    name: "Advertisement",
+    key: "advertisement",
+    icon: <PlayCircleOutlineIcon fontSize="small" />,
+    route: "/advertisement",
+    component: <AddvertiseMent />,
   },
   {
     key: "flight table", // Unique key for the route
     route: "/flighttable", // Route path for FlightTables
-    component: <FlightTables />, // FlightTables component
+    component: <FlightChange />, // FlightTables component
   },
   {
     key: "hoteltable", // Unique key for the route
@@ -203,6 +230,11 @@ const routes = [
     route: "/buschange", // Route path for FlightTables
     component: <BusChange />, // FlightTables component
   },
+  {
+    key: "busagentcancel", // Unique key for the route
+    route: "/busagentcancel", // Route path for FlightTables
+    component: <BusChange />, // FlightTables component
+  },
 
   {
     key: "userbuschange", // Unique key for the route
@@ -220,7 +252,69 @@ const routes = [
     route: "/userflighttable", // Route path for FlightTables
     component: <UserFlightChange />, // FlightTables component
   },
+  {
+    key: "agentflightcancel", // Unique key for the route
+    route: "/agentflightcancel", // Route path for FlightTables
+    component: <AgentFlightCancel />, // FlightTables component
+  },
+  {
+    key: "agenthotelcancel", // Unique key for the route
+    route: "/agenthotelcancel", // Route path for FlightTables
+    component: <AgentHotelCancel />, // FlightTables component
+  },
 
+  {
+    key: "agentbuscancel", // Unique key for the route
+    route: "/agentbuscancel", // Route path for FlightTables
+    component: <AgentbusCancel />, // FlightTables componentF
+  },
+  {
+    key: "userbuscancel", // Unique key for the route
+    route: "/userbuscancel", // Route path for FlightTables
+    component: <UserBusCancel />, // FlightTables component
+  },
+  {
+    key: "userflightcancel", // Unique key for the route
+    route: "/userflightcancel", // Route path for FlightTables
+    component: <UserFlightCancel />, // FlightTables component
+  },
+  {
+    key: "userflightcancel", // Unique key for the route
+    route: "/Userhotelcancel", // Route path for FlightTables
+    component: <UserHotelCancel />, // FlightTables component
+  },
+  {
+    key: "userflightbooking", // Unique key for the route
+    route: "/userflightbooking", // Route path for FlightTables
+    component: <UserFlightBooking />, // FlightTables component
+  },
+  {
+    key: "userbusbooking", // Unique key for the route
+    route: "/userbusbooking", // Route path for FlightTables
+    component: <UserBusBooking />, // FlightTables component
+  },
+  {
+    key: "userhotelbooking", // Unique key for the route
+    route: "/userhotelbooking", // Route path for FlightTables
+    component: <UserHotelBooking />, // FlightTables component
+  },
+  {
+    key: "userhotelbooking", // Unique key for the route
+    route: "/agentbusbooking", // Route path for FlightTables
+    component: <AgentBusBooking />, // FlightTables component
+  },
+
+  {
+    key: "agentflightbooking", // Unique key for the route
+    route: "/agentflightbooking", // Route path for FlightTables
+    component: <AgentFlightBooking />, // FlightTables component
+  },
+
+  {
+    key: "agenthotelbooking", // Unique key for the route
+    route: "/agenthotelbooking", // Route path for FlightTables
+    component: <AgentHotelBooking />, // FlightTables component
+  },
   {
     type: "collapse",
     name: "User Markup Amount",
@@ -267,6 +361,12 @@ const routes = [
     icon: <GroupAddIcon fontSize="small" />,
     route: "/authentication/event",
     component: <Event />,
+  },
+  {
+    key: "addvertise",
+
+    route: "/authentication/addadvertisement",
+    component: <AddvertiseMentForm />,
   },
   {
     type: "collapse",

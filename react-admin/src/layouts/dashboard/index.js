@@ -13,7 +13,8 @@ import Footer from "examples/Footer";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
-
+import CancelIcon from "@mui/icons-material/Cancel";
+import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
@@ -24,7 +25,8 @@ import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import CardTravelIcon from "@mui/icons-material/CardTravel";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
-
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import LayersIcon from "@mui/icons-material/Layers";
 //Api base url import
 import { apiURL } from "Constants/Constant";
 
@@ -49,57 +51,133 @@ function Dashboard() {
       <DashboardNavbar />
       <MDBox py={3}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={4}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="dark"
                 icon="flights"
                 title="Flights"
                 count={dashboardData.NoOfFlightBookings}
-                percentage={{
-                  color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
-                }}
+                // percentage={{
+                //   color: "success",
+                //   amount: "+55%",
+                //   label: "than lask week",
+                // }}
               />
             </MDBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={4}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
+                color="dark"
                 icon="hotel"
                 title="Hotels"
                 count={dashboardData?.NoOfHotelBookings}
-                percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last month",
-                }}
+                // percentage={{
+                //   color: "success",
+                //   amount: "+3%",
+                //   label: "than last month",
+                // }}
               />
             </MDBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={4}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
-                color="success"
+                color="dark"
                 icon={<DirectionsBusIcon />}
                 title="Bus"
                 count={dashboardData?.NoOfBusBookings}
+                // percentage={{
+                //   color: "success",
+                //   amount: "+1%",
+                //   label: "than yesterday",
+                // }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="dark"
+                icon={<ChangeCircleIcon />}
+                title="Change Request"
+                count={dashboardData?.totalChangeRequests}
                 percentage={{
                   color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
+                  amount: "",
+                  label: "Just updated",
                 }}
               />
             </MDBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={4}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
-                color="primary"
-                icon={<HouseboatIcon />}
-                title="Packages"
-                count="+91"
+                color="dark"
+                icon={<CancelIcon />}
+                title="Cancelled"
+                count={dashboardData?.totalCancelled}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="dark"
+                icon={<GroupAddIcon />}
+                title="Agent"
+                count={dashboardData?.NoOfAgent}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="dark"
+                icon={<LayersIcon />}
+                title="Total Booking"
+                count={dashboardData?.TotalBooking}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="dark"
+                icon={<GroupAddIcon />}
+                title="Subadmin"
+                count={dashboardData?.NoOfSubAdmin}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="dark"
+                icon={<GroupAddIcon />}
+                title="User"
+                count={dashboardData?.NoOfUser}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -109,7 +187,7 @@ function Dashboard() {
             </MDBox>
           </Grid>
         </Grid>
-        <MDBox mt={4.5}>
+        {/* <MDBox mt={4.5}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
@@ -149,8 +227,8 @@ function Dashboard() {
               </MDBox>
             </Grid>
           </Grid>
-        </MDBox>
-        <MDBox>
+        </MDBox> */}
+        {/* <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={8}>
               <Projects />
@@ -159,7 +237,7 @@ function Dashboard() {
               <OrdersOverview />
             </Grid>
           </Grid>
-        </MDBox>
+        </MDBox> */}
       </MDBox>
       <Footer />
     </DashboardLayout>

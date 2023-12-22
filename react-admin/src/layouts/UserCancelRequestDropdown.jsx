@@ -26,7 +26,7 @@ const UserCancelRequestDropdown = () => {
         User Cancel Request
       </div>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <Link to="/flighttable">
+        <Link to="/userflightcancel">
           {" "}
           <MenuItem
             // onClick={handleMenuItemClick}
@@ -36,7 +36,7 @@ const UserCancelRequestDropdown = () => {
             Flight
           </MenuItem>
         </Link>
-        <Link to="/hoteltable">
+        <Link to="/Userhotelcancel">
           {" "}
           <MenuItem style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <HotelIcon fontSize="small" />
@@ -44,7 +44,7 @@ const UserCancelRequestDropdown = () => {
           </MenuItem>
         </Link>
 
-        <Link to="/bustable">
+        <Link to="/userbuscancel">
           <MenuItem style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <DirectionsBusIcon fontSize="small" />
             Bus

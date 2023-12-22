@@ -27,7 +27,7 @@ const AgentCancelRequestDropdown = () => {
         Agent Cancel Request
       </div>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <Link to="/flighttable">
+        <Link to="/agentflightcancel">
           {" "}
           <MenuItem
             // onClick={handleMenuItemClick}
@@ -37,7 +37,7 @@ const AgentCancelRequestDropdown = () => {
             Flight
           </MenuItem>
         </Link>
-        <Link to="/hotelchange">
+        <Link to="/agenthotelcancel">
           {" "}
           <MenuItem style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <HotelIcon fontSize="small" />
@@ -45,7 +45,7 @@ const AgentCancelRequestDropdown = () => {
           </MenuItem>
         </Link>
 
-        <Link to="/bustable">
+        <Link to="/agentbuscancel">
           <MenuItem style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <DirectionsBusIcon fontSize="small" />
             Bus

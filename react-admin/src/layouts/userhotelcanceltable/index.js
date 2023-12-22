@@ -32,13 +32,13 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
 import subAdmin from "layouts/tables/data/subAdmin";
-import userbuschange from "./data/userbuschange";
-function UserBusChange() {
+import hotelcancel from "./data/hotelcancel";
+function UserHotelCancel() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
   const { columns: rColumns, rows: rRows } = usersTableData();
   const { columns: sColumns, rows: sRows } = subAdmin();
-  const { columns: aColumns, rows: aRows } = userbuschange();
+  const { columns: aColumns, rows: aRows } = hotelcancel();
 
   return (
     <DashboardLayout>
@@ -58,7 +58,7 @@ function UserBusChange() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  User Bus Change Request
+                  User Hotel Cancel Request
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>
@@ -79,4 +79,4 @@ function UserBusChange() {
   );
 }
 
-export default UserBusChange;
+export default UserHotelCancel;

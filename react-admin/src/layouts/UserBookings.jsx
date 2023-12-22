@@ -27,7 +27,7 @@ const UserBookings = () => {
         User Bookings
       </div>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <Link to="/flighttable">
+        <Link to="/userflightbooking">
           {" "}
           <MenuItem
             // onClick={handleMenuItemClick}
@@ -37,7 +37,7 @@ const UserBookings = () => {
             Flight
           </MenuItem>
         </Link>
-        <Link to="/hoteltable">
+        <Link to="/userhotelbooking">
           {" "}
           <MenuItem style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <HotelIcon fontSize="small" />
@@ -45,7 +45,7 @@ const UserBookings = () => {
           </MenuItem>
         </Link>
 
-        <Link to="/bustable">
+        <Link to="/userbusbooking">
           <MenuItem style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <DirectionsBusIcon fontSize="small" />
             Bus
