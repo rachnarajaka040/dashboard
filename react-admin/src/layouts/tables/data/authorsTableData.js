@@ -82,34 +82,29 @@ export default function data() {
     rows: userData.map((data) => ({
       author: (
         <Author
-          image={team2}
-          name={data.personal_details.first_name}
-          email={data.personal_details.email}
+          image={data?.agency_details?.document_details?.pan_card_document}
+          name={data.personal_details.first_name || "NA"}
+          email={data.personal_details.email || "NA"}
         />
       ),
-      // author: (
-      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-      //     {data.personal_details.first_name} {data.personal_details.last_name}
-      //   </MDTypography>
-      // ),
-      agencyname: (
+      agecncyname: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data.agency_details.agency_name}
+          {data.agency_details.agency_name || "NA"}
         </MDTypography>
       ),
-      // classification: (
-      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-      //     {data.agency_gst_details.agency_classification}
-      //   </MDTypography>
-      // ),
+      classification: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data.agency_gst_details?.agency_classification || "NA"}
+        </MDTypography>
+      ),
       address: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data.agency_details.address}
+          {data.agency_details.address || "NA"}
         </MDTypography>
       ),
       person: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data.personal_details.first_name} {data.personal_details.last_name}
+          {data.agency_gst_details?.contact_person || "NA"}
         </MDTypography>
       ),
       status: (
@@ -119,37 +114,39 @@ export default function data() {
       ),
       employed: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data.employed}
+          {data.agency_gst_details?.provisional_GSTIN || "NA"}
         </MDTypography>
       ),
       mobile: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {data.personal_details.mobile.mobile_number}
+          {data.personal_details?.mobile?.mobile_number || "NA"}
         </MDTypography>
       ),
       Password: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+          {data.personal_details?.password?.slice(0, 32) || "NA"}
+          <br />
+          {data.personal_details?.password?.slice(32) || "NA"}
         </MDTypography>
       ),
       flight: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+          {data.markup?.flight || "NA"}
         </MDTypography>
       ),
       hotel: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+          {data.markup?.hotel || "NA"}
         </MDTypography>
       ),
       bus: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+          {data.markup?.bus || "NA"}
         </MDTypography>
       ),
       holiday: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+          {data.markup?.holiday || "NA"}
         </MDTypography>
       ),
       vendor: (

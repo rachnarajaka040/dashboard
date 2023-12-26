@@ -84,28 +84,28 @@ const FirebaseLogin = ({ ...rest }) => {
 
       <Formik
         initialValues={{
-          email: '',
+          username: '', // Change the field name to 'username'
           password: '',
           submit: null
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+          username: Yup.string().max(255).required('Username is required'), // Update the validation for the new 'username' field
           password: Yup.string().max(255).required('Password is required')
         })}
       >
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...rest}>
             <TextField
-              error={Boolean(touched.email && errors.email)}
+              error={Boolean(touched.username && errors.username)} // Update references to 'email' to 'username'
               fullWidth
-              helperText={touched.email && errors.email}
-              label="Email Address / Username"
+              helperText={touched.username && errors.username} // Update references to 'email' to 'username'
+              label="Username" // Update the label to 'Username'
               margin="normal"
-              name="email"
+              name="username" // Change the field name to 'username'
               onBlur={handleBlur}
               onChange={handleChange}
-              type="email"
-              value={values.email}
+              type="text" // Assuming 'username' is alphanumeric, change to 'text' or 'password' as needed
+              value={values.username} // Change references to 'email' to 'username'
               variant="outlined"
             />
 
@@ -155,7 +155,7 @@ const FirebaseLogin = ({ ...rest }) => {
             )}
 
             <Box mt={2}>
-              <Link to="/subadmin">
+              <Link to="/dashboard/default">
                 <Button color="primary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
                   Log In
                 </Button>

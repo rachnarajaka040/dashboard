@@ -1,3 +1,4 @@
+// assets
 import NavigationOutlinedIcon from '@mui/icons-material/NavigationOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
@@ -25,7 +26,7 @@ export default {
   items: [
     {
       id: 'navigation',
-      title: 'Sub Admin',
+      title: 'Subadmin',
       caption: 'Dashboard',
       type: 'group',
       icon: icons['NavigationOutlinedIcon'],
@@ -37,43 +38,15 @@ export default {
           icon: icons['HomeOutlinedIcon'],
           url: '/dashboard/default'
         },
-        {
-          id: 'dashboard2',
-          title: 'Dashboard2',
+         {
+          id: 'login-1',
+          title: 'Login',
           type: 'item',
-          icon: icons['HomeOutlinedIcon'],
-          url: '/dashboard/default'
+          url: '/application/login',
+          target: true
         },
-        {
-          id: 'dashboard2',
-          title: 'Dashboard2',
-          type: 'item',
-          icon: icons['HomeOutlinedIcon'],
-          url: '/dashboard/default'
-        },
-        {
-          id: 'dashboard2',
-          title: 'Dashboard2',
-          type: 'item',
-          icon: icons['HomeOutlinedIcon'],
-          url: '/dashboard/default'
-        },
-        {
-          id: 'auth',
-          title: 'Authentication',
-          type: 'collapse',
-          icon: icons['SecurityOutlinedIcon'],
-          children: [
-            {
-              id: 'login-1',
-              title: 'Login',
-              type: 'item',
-              url: '/',
-              target: true
-            }
-          ]
-        }
       ]
-    }
+    },
+   
   ]
 };
