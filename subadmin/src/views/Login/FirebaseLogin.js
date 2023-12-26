@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -23,6 +24,7 @@ import { Link } from 'react-router-dom';
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { apiURL } from '../../../src/constants/constants';
 // import Google from 'assets/images/social-google.svg';
 
 // ==============================|| FIREBASE LOGIN ||============================== //
@@ -39,49 +41,51 @@ const FirebaseLogin = ({ ...rest }) => {
     event.preventDefault();
   };
 
+
+
+  // //////////////////////////api integration////////////////////////////////
+
+  const handleFormSubmit = async (values, { setErrors, setSubmitting }) => {
+    try {
+      // Make a POST request to your login API endpoint
+      const response = await axios.post(`${apiURL.baseURL}/skytrails/api/subAdmin/subAdminLogin`, {
+        username: values.username,
+        password: values.password,
+      });
+      console.log(response);
+      console.log('Login success:', response.data);
+      window.location.href = '/dashboard/default';
+    } catch (error) {
+      console.error('Login error:', error.response ? error.response.data : error.message);
+      setErrors({ submit: 'Invalid username or password' });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
-      {/* <Grid container justifyContent="center">
-        <Grid item xs={12}>
-          <Button
-            fullWidth={true}
-            sx={{
-              fontSize: { md: '1rem', xs: '0.875rem' },
-              fontWeight: 500,
-              backgroundColor: theme.palette.grey[50],
-              color: theme.palette.grey[600],
-              textTransform: 'capitalize',
-              '&:hover': {
-                backgroundColor: theme.palette.grey[100]
-              }
-            }}
-            size="large"
-            variant="contained"
-          >
-            <img
-              src={Google}
-              alt="google"
-              width="20px"
-              style={{
-                marginRight: '16px',
-                '@media (maxWidth:899.95px)': {
-                  marginRight: '8px'
-                }
-              }}
-            />{' '}
-            Sign in with Google
-          </Button>
-        </Grid>
-      </Grid> */}
-
-      {/* <Box alignItems="center" display="flex" mt={2}>
-        <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
-        <Typography color="textSecondary" variant="h5" sx={{ m: theme.spacing(2) }}>
-          OR
-        </Typography>
-        <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
-      </Box> */}
-
+      
       <Formik
         initialValues={{
           username: '', // Change the field name to 'username'
@@ -92,6 +96,7 @@ const FirebaseLogin = ({ ...rest }) => {
           username: Yup.string().max(255).required('Username is required'), // Update the validation for the new 'username' field
           password: Yup.string().max(255).required('Password is required')
         })}
+        onSubmit={handleFormSubmit}
       >
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...rest}>
@@ -155,7 +160,7 @@ const FirebaseLogin = ({ ...rest }) => {
             )}
 
             <Box mt={2}>
-              <Link to="/dashboard/default">
+              <Link>
                 <Button color="primary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
                   Log In
                 </Button>
