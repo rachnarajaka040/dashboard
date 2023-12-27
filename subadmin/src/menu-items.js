@@ -38,15 +38,14 @@ export default {
           icon: icons['HomeOutlinedIcon'],
           url: '/dashboard/default'
         },
-         {
+        {
           id: 'login-1',
           title: 'Login',
           type: 'item',
           url: '/application/login',
           target: true
-        },
+        }
       ]
-    },
-   
+    }
   ]
 };

@@ -20,11 +20,11 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
-
+import { apiURL } from "Constants/Constant";
+import { useEffect, useState } from "react";
+import axios from "axios";
 // Images
 import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
   const Author = ({ image, name, email }) => (
@@ -47,652 +47,89 @@ export default function data() {
       <MDTypography variant="caption">{description}</MDTypography>
     </MDBox>
   );
+  const [userData, setUserData] = useState([]);
+  const fetchUserData = async () => {
+    try {
+      const responseData = await axios.get(
+        `${apiURL.baseURL}/skyTrails/api/admin/getCancelUserHotelBooking`
+      );
+      setUserData(responseData?.data?.result.docs);
+      console.log(responseData?.data?.result.docs + "hotelcancel");
+    } catch (error) {
+      console.error("Error fetching dashboard data:", error);
+    }
+  };
 
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+  const calculateStayDuration = (checkInDate, checkOutDate) => {
+    const startDate = new Date(checkInDate);
+    const endDate = new Date(checkOutDate);
+    const timeDifference = endDate - startDate;
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    return daysDifference;
+  };
   return {
     columns: [
-      { Header: "agents", accessor: "author", width: "30%", align: "left" },
-      { Header: "booking id", accessor: "agecncyname", width: "30%", align: "center" },
+      { Header: "Booking ID", accessor: "author", width: "30%", align: "center" },
+      { Header: "Name", accessor: "agecncyname", width: "30%", align: "center" },
       { Header: "phone", accessor: "classification", align: "left", width: "40%" },
       { Header: "reason", accessor: "address", align: "left" },
-      { Header: "hotel id", accessor: "person", align: "left" },
-      { Header: "Approve", accessor: "status", align: "center" },
-      { Header: "checkIn date", accessor: "approvestatus", align: "center", width: "45%" },
-      { Header: "amount", accessor: "employed", align: "center" },
+      { Header: "Hotel Id", accessor: "person", align: "left" },
+      { Header: "Amount", accessor: "status", align: "center" },
+      { Header: "check in date", accessor: "approvestatus", align: "center", width: "45%" },
+      { Header: "Stay Duration (Days)", accessor: "employed", align: "center" },
       { Header: "destination", accessor: "origin", align: "center" },
-      { Header: "rooms", accessor: "mobile", align: "center" },
-      { Header: "hotel", accessor: "date", align: "center" },
+      { Header: "HotelName", accessor: "mobile", align: "center" },
+      { Header: "Approve", accessor: "approve", align: "left" },
     ],
 
-    rows: [
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        approvestatus: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        agecncyname: <Job description="Organization" />,
-        classification: <Job description="Organization" />,
-        address: <Job description="Organization" />,
-        person: <Job description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: <Job description="Organization" />,
-        mobile: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
-          </MDTypography>
-        ),
-        origin: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        date: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        hotel: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        bus: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        holiday: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-        vendor: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
-        ),
-      },
-    ],
+    rows: userData.map((data) => ({
+      author: (
+        <Author
+          // image={data?.agency_details?.document_details?.pan_card_document}
+          name={data?.bookingId}
+        />
+      ),
+      agecncyname: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data?.userDetails.username || "No Data"}
+        </MDTypography>
+      ),
+      // id: (
+      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+      //     {data?.userDetails.phone.mobile_number || "No Data"}
+      //   </MDTypography>
+      // ),
+      classification: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data?.userDetails?.phone?.mobile_number}
+        </MDTypography>
+      ),
+
+      // phone: (
+      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+      //     {data.hotelDetails.pnr || "No Data "}
+      //   </MDTypography>
+      // ),
+      address: <MDBox ml={-1}>{data?.reason}</MDBox>,
+      person: <MDBox ml={-1}>{data.hotelDetails?.hotelId || "No Data"}</MDBox>,
+      status: <MDBox ml={-1}>{data.hotelDetails?.amount || " No Data"}</MDBox>,
+      approvestatus: <MDBox ml={-1}>{data.hotelDetails?.CheckInDate}</MDBox>,
+      employed: (
+        <MDBox ml={-1}>
+          {calculateStayDuration(data.hotelDetails?.CheckInDate, data.hotelDetails?.CheckOutDate)}{" "}
+        </MDBox>
+      ),
+      origin: <MDBox ml={-1}>{data.hotelDetails?.cityName}</MDBox>,
+      mobile: <MDBox ml={-1}>{data.hotelDetails?.hotelName}</MDBox>,
+
+      approve: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          Approve
+        </MDTypography>
+      ),
+    })),
   };
 }

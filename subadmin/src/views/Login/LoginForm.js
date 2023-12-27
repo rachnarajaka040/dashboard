@@ -27,7 +27,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 // ==============================|| FIREBASE LOGIN ||============================== //
 
-const FirebaseLogin = ({ ...rest }) => {
+const LoginForm = ({ ...rest }) => {
   const theme = useTheme();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -41,47 +41,6 @@ const FirebaseLogin = ({ ...rest }) => {
 
   return (
     <>
-      {/* <Grid container justifyContent="center">
-        <Grid item xs={12}>
-          <Button
-            fullWidth={true}
-            sx={{
-              fontSize: { md: '1rem', xs: '0.875rem' },
-              fontWeight: 500,
-              backgroundColor: theme.palette.grey[50],
-              color: theme.palette.grey[600],
-              textTransform: 'capitalize',
-              '&:hover': {
-                backgroundColor: theme.palette.grey[100]
-              }
-            }}
-            size="large"
-            variant="contained"
-          >
-            <img
-              src={Google}
-              alt="google"
-              width="20px"
-              style={{
-                marginRight: '16px',
-                '@media (maxWidth:899.95px)': {
-                  marginRight: '8px'
-                }
-              }}
-            />{' '}
-            Sign in with Google
-          </Button>
-        </Grid>
-      </Grid> */}
-
-      {/* <Box alignItems="center" display="flex" mt={2}>
-        <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
-        <Typography color="textSecondary" variant="h5" sx={{ m: theme.spacing(2) }}>
-          OR
-        </Typography>
-        <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
-      </Box> */}
-
       <Formik
         initialValues={{
           username: '', // Change the field name to 'username'
@@ -168,4 +127,4 @@ const FirebaseLogin = ({ ...rest }) => {
   );
 };
 
-export default FirebaseLogin;
+export default LoginForm;

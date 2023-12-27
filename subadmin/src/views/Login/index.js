@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import { Card, CardContent, Typography, Grid } from '@mui/material';
 
 // project import
-import AuthLogin from './FirebaseLogin';
+import AuthLogin from './LoginForm';
 
 // assets
 

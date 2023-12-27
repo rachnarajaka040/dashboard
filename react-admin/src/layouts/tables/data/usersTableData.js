@@ -55,7 +55,7 @@ export default function data() {
     try {
       const responseData = await axios.get(`${apiURL.baseURL}/skyTrails/api/admin/getAllUsers`);
       setuserData(responseData.data.result.docs);
-      console.log(responseData.data.data, "apiadat");
+      console.log(responseData.data.result.docs, "apiadat");
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
     }

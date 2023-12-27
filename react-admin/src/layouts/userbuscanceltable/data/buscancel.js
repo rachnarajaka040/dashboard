@@ -66,18 +66,18 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "agents", accessor: "author", width: "30%", align: "left" },
+      { Header: "agents", accessor: "author", width: "30%", align: "center" },
       { Header: "bus id", accessor: "id", width: "30%", align: "center" },
-      { Header: "agency name", accessor: "agecncyname", width: "30%", align: "center" },
       { Header: "phone", accessor: "classification", align: "left", width: "40%" },
       { Header: "reason", accessor: "address", align: "left" },
       { Header: "pnr", accessor: "person", align: "left" },
-      { Header: "Approve", accessor: "status", align: "center" },
+      { Header: "Amount", accessor: "status", align: "center" },
       { Header: "origin", accessor: "approvestatus", align: "center", width: "45%" },
-      { Header: "amount", accessor: "employed", align: "center" },
-      { Header: "destination", accessor: "origin", align: "center" },
-      { Header: "date of journey", accessor: "mobile", align: "center" },
-      { Header: "bus type", accessor: "date", align: "center" },
+      { Header: "destination", accessor: "employed", align: "center" },
+      { Header: "date of journey", accessor: "origin", align: "center" },
+      { Header: "bus type", accessor: "mobile", align: "center" },
+      { Header: "No Of Seat", accessor: "seat", align: "left" },
+      { Header: "Approve", accessor: "approve", align: "left" },
     ],
 
     rows: userData.map((data) => ({
@@ -87,16 +87,21 @@ export default function data() {
           name={data?.userDetails.username}
         />
       ),
-      id: (
+      agecncyname: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data.busId || "NA"}
+          {data?.userDetails.username}
         </MDTypography>
       ),
-      // date: (
-      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-      //     {data.userDetails.agency_details.agency_name || "NA"}
-      //   </MDTypography>
-      // ),
+      id: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data?.busId || "NA"}
+        </MDTypography>
+      ),
+      classification: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data?.userDetails.phone.mobile_number || "No Data"}
+        </MDTypography>
+      ),
 
       phone: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
@@ -110,9 +115,9 @@ export default function data() {
       employed: <MDBox ml={-1}>{data.busDetails.destination || "No Data"} </MDBox>,
       origin: <MDBox ml={-1}>{data.busDetails.dateOfJourney || "No Data"}</MDBox>,
       mobile: <MDBox ml={-1}>{data.busDetails.busType || "No Data"}</MDBox>,
-      agecncyname: (
+      seat: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data?.bookingId || "NA"}
+          {data?.busDetails.noOfSeats || "No Data"}
         </MDTypography>
       ),
       approve: (
