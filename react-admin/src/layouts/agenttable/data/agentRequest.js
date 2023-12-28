@@ -1,75 +1,149 @@
-// Import necessary components and modules
+/* eslint-disable react/prop-types */
+/* eslint-disable react/function-component-definition */
+/**
+=========================================================
+* Material Dashboard 2 React - v2.2.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard-react
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
+// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import { apiURL } from "Constants/Constant";
 import { useEffect, useState } from "react";
+import axios from "axios";
+// Images
+import team2 from "assets/images/team-2.jpg";
+// import team3 from "assets/images/team-3.jpg";
+// import team4 from "assets/images/team-4.jpg";
+
 export default function data() {
-  // Define Author and Job components
+  const Author = ({ image, name, email }) => (
+    <MDBox display="flex" alignItems="center" lineHeight={1}>
+      <MDAvatar src={image} name={name} size="sm" />
+      <MDBox ml={2} lineHeight={1}>
+        <MDTypography display="block" variant="button" fontWeight="medium">
+          {name}
+        </MDTypography>
+        <MDTypography variant="caption">{email}</MDTypography>
+      </MDBox>
+    </MDBox>
+  );
 
-  const [userData, setAgentData] = useState([]);
+  const Job = ({ title, description }) => (
+    <MDBox lineHeight={1} textAlign="left">
+      <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
+        {title}
+      </MDTypography>
+      <MDTypography variant="caption">{description}</MDTypography>
+    </MDBox>
+  );
+  const [userData, setuserData] = useState([]);
 
-  const fetchAgentData = async () => {
+  const fetchuserdata = async () => {
     try {
       const responseData = await axios.get(`${apiURL.baseURL}/skytrails/api/admin/getAgents`);
-      setAgentData(responseData?.data?.result.docs);
-      console.log(responseData.data.result.docs, "apiadat");
+      setuserData(responseData.data.result.docs);
+      console.log(responseData.data.data, "apiadat");
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
     }
   };
-
   useEffect(() => {
-    fetchAgentData();
+    fetchuserdata();
   }, []);
-
   return {
     columns: [
-      { Header: "id", accessor: "_id" },
-      { Header: "User Name", accessor: "author" },
-      { Header: "Email", accessor: "email" },
-      {
-        Header: "phone",
-        accessor: "personal_details.mobile.mobile_number",
-      },
-      { Header: "User Type", accessor: "type" },
-      { Header: "OtpVerified", accessor: "otp" },
-      { Header: "ApproveStatus", accessor: "approve" },
-      { Header: "Status", accessor: "status" },
-      { Header: "Reason", accessor: "reason" },
+      { Header: "users", accessor: "author", width: "30%", align: "left" },
 
-      // Add other columns as needed
+      { Header: "Date of Birth", accessor: "dob", align: "center" },
+      { Header: "Phone Number", accessor: "Phone", align: "center" },
+      { Header: "Pan Number", accessor: "Pan", align: "center" },
     ],
-
     rows: userData.map((data) => ({
-      // _id: data._id,
-
-      // classification: data.agency_gst_details?.agency_classification || "NA",
-      // address: data.agency_details.address || "NA",
-      // person: data.agency_gst_details?.contact_person || "NA",
       author: (
+        <Author
+          image={data?.profilePic}
+          name={
+            `${data.personal_details?.first_name}${data.personal_details?.last_name}` || "No Data"
+          }
+          email={data.personal_details?.email || "No Data"}
+        />
+      ),
+      dob: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data.agency_details.agency_name || "NA"}
+          {data.personal_details?.mobile?.mobile_number || "No Data"}
         </MDTypography>
       ),
-      status: (
-        <MDBox ml={-1}>
-          <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-        </MDBox>
-      ),
-      approvestatus: (
-        <MDBox ml={-1}>
-          <MDBadge badgeContent="block" color="success" variant="gradient" size="sm" />
-        </MDBox>
-      ),
-      // employed: <Job description="Organization" />,
-      mobile: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {data.personal_details.mobile.mobile_number}
+      Phone: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data.agency_details?.agency_name || "No Data"}
         </MDTypography>
       ),
-      // Add other properties as needed
+      Pan: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data.agency_details?.pan_number || "No Data"}
+        </MDTypography>
+      ),
+      // person: (
+      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+      //     {data.agency_gst_details?.contact_person || "NA"}
+      //   </MDTypography>
+      // ),
+
+      // employed: (
+      //   <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+      //     {data.agency_gst_details?.provisional_GSTIN || "NA"}
+      //   </MDTypography>
+      // ),
+      // mobile: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {data.personal_details?.mobile?.mobile_number || "NA"}
+      //   </MDTypography>
+      // ),
+      // Password: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {data.personal_details?.password?.slice(0, 32) || "NA"}
+      //     <br />
+      //     {data.personal_details?.password?.slice(32) || "NA"}
+      //   </MDTypography>
+      // ),
+      // flight: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {data.markup?.flight || "NA"}
+      //   </MDTypography>
+      // ),
+      // hotel: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {data.markup?.hotel || "NA"}
+      //   </MDTypography>
+      // ),
+      // bus: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {data.markup?.bus || "NA"}
+      //   </MDTypography>
+      // ),
+      // holiday: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {data.markup?.holiday || "NA"}
+      //   </MDTypography>
+      // ),
+      // vendor: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     Edit
+      //   </MDTypography>
+      // ),
     })),
   };
 }

@@ -1,5 +1,7 @@
 import React from 'react';
+
 import axios from 'axios';
+
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -20,11 +22,13 @@ import {
 //  third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-// import { Link } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { apiURL } from '../../constants/constants';
+
 
 // import Google from 'assets/images/social-google.svg';
 
@@ -41,6 +45,7 @@ const LoginForm = ({ ...rest }) => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
 
   // //////////////////////////api integration////////////////////////////////
 
@@ -67,6 +72,7 @@ const LoginForm = ({ ...rest }) => {
     }
   };
 
+
   return (
     <>
       <Formik
@@ -79,7 +85,9 @@ const LoginForm = ({ ...rest }) => {
           username: Yup.string().max(255).required('Username is required'), // Update the validation for the new 'username' field
           password: Yup.string().max(255).required('Password is required')
         })}
+
         onSubmit={handleFormSubmit}
+
       >
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...rest}>
@@ -143,6 +151,7 @@ const LoginForm = ({ ...rest }) => {
             )}
 
             <Box mt={2}>
+
               <Button
                 color="primary"
                 disabled={isSubmitting}
@@ -154,6 +163,7 @@ const LoginForm = ({ ...rest }) => {
               >
                 Log In
               </Button>
+
             </Box>
           </form>
         )}

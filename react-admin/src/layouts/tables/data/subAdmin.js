@@ -26,7 +26,8 @@ export default function data() {
   const fetchUserData = async () => {
     try {
       const responseData = await axios.get(`${apiURL.baseURL}/skytrails/api/admin/getSubAdmin`);
-      setUserData(responseData?.data?.result);
+      setUserData(responseData.data.result.docs);
+      console.log(responseData.data.result.docs + "userdataaaaaaa");
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
     }
@@ -38,34 +39,33 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Subadmin", accessor: "userName", width: "30%", align: "left" },
-      { Header: "Mobile", accessor: "contactNumber", align: "center" },
-      { Header: "Password", accessor: "password", align: "center" },
-      { Header: "User Type", accessor: "userType", align: "center" },
+      { Header: "User Name", accessor: "userName", width: "30%", align: "left" },
+      { Header: "Email", accessor: "email", align: "center" },
+      { Header: "Contact", accessor: "contactNumber", align: "center" },
+
+      { Header: "Auth Type", accessor: "userType", align: "center" },
       { Header: "Status", accessor: "status", align: "center" },
     ],
 
-    rows: [userData].map((data) => ({
+    rows: userData.map((data) => ({
       userName: (
-        <Author
-          // image={data?.agency_details?.document_details?.pan_card_document}
-          name={data?.userName || "NA"}
-          email={data?.email || "NA"}
-        />
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data?.userName || "NA"}
+        </MDTypography>
       ),
-      mobile: (
+      email: (
+        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+          {data?.email || "NA"}
+        </MDTypography>
+      ),
+      contactNumber: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
           {data?.contactNumber || "NA"}
         </MDTypography>
       ),
-      password: (
-        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data?.password || "NA"}
-        </MDTypography>
-      ),
       userType: (
         <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data?.userType || "NA"}
+          {data?.authType || "NA"}
         </MDTypography>
       ),
       status: (
