@@ -79,9 +79,9 @@ const Webdata = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredData.map((row, key) => (
-              <TableRow key={row._id} >
-              <TableCell>{key + 1}</TableCell>
+            {filteredData.map((row, index) => (
+              <TableRow key={row._id || index} >
+              <TableCell>{index + 1}</TableCell>
                 <TableCell>{row.title}</TableCell>
                 <TableCell>{row.content}</TableCell>
                 <TableCell>{new Date(row.startDate).toLocaleDateString()}</TableCell>

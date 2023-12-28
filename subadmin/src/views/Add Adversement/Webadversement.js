@@ -93,6 +93,8 @@ function Webadversement() {
               variant="outlined"
               fullWidth
               name="title"
+              InputLabelProps={{ shrink: true }}
+              placeholder='Enter Title'
               value={formik.values.title}
               onChange={formik.handleChange}
               error={formik.touched.title && Boolean(formik.errors.title)}
@@ -106,6 +108,8 @@ function Webadversement() {
               rows={3}
               variant="outlined"
               fullWidth
+              InputLabelProps={{ shrink: true }}
+              placeholder='Enter your Content'
               name="content"
               value={formik.values.content}
               onChange={formik.handleChange}
@@ -118,13 +122,15 @@ function Webadversement() {
               label="Add Type"
               variant="outlined"
               fullWidth
+              InputLabelProps={{ shrink: true }}
+              placeholder='FLIGHTS, HOTELS, HOLIDAYS, TRAINS, CABS, BANKOFFERS, BUS'
               name="addType"
               value={formik.values.addType}
               onChange={formik.handleChange}
               error={formik.touched.addType && Boolean(formik.errors.addType)}
               helperText={formik.touched.addType && formik.errors.addType}
             />
-            <small style={{ fontWeight: 'bold' }}>[FLIGHTS, HOTELS, HOLIDAYS, TRAINS, CABS, BANKOFFERS, BUS]</small>
+        
           </Box>
           <Box mb={2}>
             <TextField
@@ -160,6 +166,7 @@ function Webadversement() {
               variant="outlined"
               fullWidth
               name="remainingDays"
+              InputLabelProps={{ shrink: true }}
               type="number"
               value={formik.values.remainingDays}
               onChange={formik.handleChange}

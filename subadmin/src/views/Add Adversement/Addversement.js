@@ -87,6 +87,8 @@ function Addversement() {
               label="Title"
               variant="outlined"
               fullWidth
+              InputLabelProps={{ shrink: true }}
+              placeholder='Enter Title'
               name="title"
               value={formik.values.title}
               onChange={formik.handleChange}
@@ -100,6 +102,8 @@ function Addversement() {
               variant="outlined"
               fullWidth
               multiline
+              InputLabelProps={{ shrink: true }}
+              placeholder="Enter your content"
               rows={3}
               name="content"
               value={formik.values.content}
@@ -140,6 +144,7 @@ function Addversement() {
             <TextField
               label="Remaining Days"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
               fullWidth
               name="remainingDays"
               type="number"

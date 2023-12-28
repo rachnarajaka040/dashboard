@@ -10,14 +10,10 @@ const AuthLogin = Loadable(lazy(() => import('../views/Login')));
 
 const AuthenticationRoutes = {
   route: '/',
-  element: <AuthLogin />,
+  element: <AuthLogin/>,
   children: [
     {
       path: '/application/login',
-
-    
-    
-
       element: <MinimalLayout />
     }
 
