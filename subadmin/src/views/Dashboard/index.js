@@ -1,29 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // material-ui
 import { useTheme, styled } from '@mui/material/styles';
 import { Grid, Card, CardHeader, CardContent, Typography, Divider, LinearProgress } from '@mui/material';
+import { apiURL } from 'constants/constants';
 
 //project import
 import SalesLineCard from './SalesLineCard';
 import SalesLineCardData from './chart/sale-chart-1';
-
+import VerticalSplitIcon from '@mui/icons-material/VerticalSplit';
 import RevenuChartCard from './RevenuChartCard';
 import RevenuChartCardData from './chart/revenu-chart';
 import ReportCard from './ReportCard';
 import { gridSpacing } from 'config.js';
-
-// assets
-//import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-//import MonetizationOnTwoTone from '@mui/icons-material/MonetizationOnTwoTone';
-//import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone';
-//import ThumbUpAltTwoTone from '@mui/icons-material/ThumbUpAltTwoTone';
-//import CalendarTodayTwoTone from '@mui/icons-material/CalendarTodayTwoTone';
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
-import HotelIcon from '@mui/icons-material/Hotel';
-import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import WebStoriesOutlinedIcon from '@mui/icons-material/WebStoriesOutlined';
+import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
+import axios from 'axios';
+
 // custom style
 const FlatCardBlock = styled((props) => <Grid item sm={6} xs={12} {...props} />)(({ theme }) => ({
   padding: '25px 25px',
@@ -41,6 +36,32 @@ const FlatCardBlock = styled((props) => <Grid item sm={6} xs={12} {...props} />)
 
 const Default = () => {
   const theme = useTheme();
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const tokenData = sessionStorage.getItem('token');
+      try {
+        const response = await axios.get(`${apiURL.baseURL}/skyTrails/api/subAdmin/subAdminDashboard`, {
+          headers: {
+            token:tokenData
+          }
+        });
+        setDashboardData(response.data.result);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading || !dashboardData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -48,42 +69,35 @@ const Default = () => {
         <Grid container spacing={gridSpacing}>
           <Grid item lg={3} sm={6} xs={12}>
             <ReportCard
-              primary="200"
-              secondary="Flight"
+              primary={dashboardData.webAdd.toString()}
+              secondary="Total Web Adds"
               color={theme.palette.warning.main}
-              footerData="10% changes on profit"
-              iconPrimary={FlightTakeoffIcon}
-              iconFooter={FlightTakeoffIcon}
+              iconPrimary={LiveTvOutlinedIcon}
             />
           </Grid>
           <Grid item lg={3} sm={6} xs={12}>
             <ReportCard
-              primary="145"
-              secondary="Hotel"
+              primary={dashboardData.AppAdd.toString()}
+              secondary="Total App Adds"
               color={theme.palette.error.main}
-              footerData="28% task performance"
-              iconPrimary={HotelIcon}
-              iconFooter={HotelIcon}
+              iconPrimary={WebStoriesOutlinedIcon}
             />
           </Grid>
           <Grid item lg={3} sm={6} xs={12}>
             <ReportCard
-              primary="290"
-              secondary="Bus"
+              primary={dashboardData.reqwebAdd.toString()}
+              secondary="Requested Web Adds"
               color={theme.palette.success.main}
-              footerData="10k daily views"
-              iconPrimary={DirectionsBusIcon}
-              iconFooter={DirectionsBusIcon}
+              iconPrimary={AddToPhotosIcon}
             />
           </Grid>
           <Grid item lg={3} sm={6} xs={12}>
             <ReportCard
-              primary="500"
-              secondary="Package"
+              primary={dashboardData.reqAppAdd.toString()}
+              secondary="Requested App Adds"
               color={theme.palette.primary.main}
-              footerData="1k download in App"
-              iconPrimary={BeachAccessIcon}
-              iconFooter={BeachAccessIcon}
+              iconPrimary={VerticalSplitIcon}
+              
             />
           </Grid>
         </Grid>

@@ -20,16 +20,17 @@ import {
 //  third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { apiURL } from '../../../src/constants/constants';
+import { apiURL } from '../../constants/constants';
+
 // import Google from 'assets/images/social-google.svg';
 
 // ==============================|| FIREBASE LOGIN ||============================== //
 
-const FirebaseLogin = ({ ...rest }) => {
+const LoginForm = ({ ...rest }) => {
   const theme = useTheme();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -41,19 +42,22 @@ const FirebaseLogin = ({ ...rest }) => {
     event.preventDefault();
   };
 
-
-
   // //////////////////////////api integration////////////////////////////////
 
   const handleFormSubmit = async (values, { setErrors, setSubmitting }) => {
     try {
       // Make a POST request to your login API endpoint
       const response = await axios.post(`${apiURL.baseURL}/skytrails/api/subAdmin/subAdminLogin`, {
-        username: values.username,
-        password: values.password,
+        userName: values.username,
+        password: values.password 
       });
       console.log(response);
       console.log('Login success:', response.data);
+      const token = response.data.result.token;
+
+      console.log('Token:', token);
+
+      sessionStorage.setItem('token', token);
       window.location.href = '/dashboard/default';
     } catch (error) {
       console.error('Login error:', error.response ? error.response.data : error.message);
@@ -63,29 +67,8 @@ const FirebaseLogin = ({ ...rest }) => {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <>
-      
       <Formik
         initialValues={{
           username: '', // Change the field name to 'username'
@@ -160,11 +143,17 @@ const FirebaseLogin = ({ ...rest }) => {
             )}
 
             <Box mt={2}>
-              <Link>
-                <Button color="primary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
-                  Log In
-                </Button>
-              </Link>
+              <Button
+                color="primary"
+                disabled={isSubmitting}
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+                onClick={handleFormSubmit}
+              >
+                Log In
+              </Button>
             </Box>
           </form>
         )}
@@ -173,4 +162,4 @@ const FirebaseLogin = ({ ...rest }) => {
   );
 };
 
-export default FirebaseLogin;
+export default LoginForm;
