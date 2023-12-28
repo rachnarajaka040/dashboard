@@ -64,9 +64,9 @@ function UserBusBooking() {
               <MDBox pt={3}>
                 <DataTable
                   table={{ columns: aColumns, rows: aRows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
+                  isSorted={true}
+                  entriesPerPage={true}
+                  showTotalEntries={true}
                   noEndBorder
                 />
               </MDBox>
