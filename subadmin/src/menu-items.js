@@ -42,8 +42,41 @@ export default {
           id: 'login-1',
           title: 'Login',
           type: 'item',
-          url: '/application/login'
-          // Remove the target property to open in the same tab
+
+          url: '/application/login',
+
+       
+        },
+        
+        {
+          id: 'datatable',
+          title: 'Adversement Table',
+          type: 'item',
+          url: '/tabledata',
+         
+        },
+        {
+          id: 'Web Data',
+          title: 'Web Table',
+          type: 'item',
+          url: '/Webdata',
+        
+        },
+        {
+          id: 'Web Data',
+          title: 'Web Advertisement',
+          type: 'item',
+          url: '/webAdvertisement',
+         
+        },
+        {
+          id: 'addversement',
+          title: 'App Adversement',
+          type: 'item',
+          url: '/Add_Advertisement',
+         
+
+
         }
       ]
     }
