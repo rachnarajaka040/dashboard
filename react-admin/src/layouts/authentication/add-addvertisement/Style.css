@@ -1,0 +1,31 @@
+.date {
+  border: none;
+  outline: none;
+}
+.datediv {
+  border-bottom: 1px solid rgb(202, 201, 201) !important;
+  margin-top: 5px !important;
+}
+.img {
+   padding-top
+   :10px;
+  border: none !important;
+}
+.datedivimg {
+  border: none !important;
+
+ 
+}
+.btn{
+    background-color:#21325D !important;
+    color:white !important;
+}
+.heading{
+    color:#21325D !important;
+}
+.main{
+    background-color:#21325D !important; 
+}
+.mainimg{
+    background-image: url(assets/images/bg-sign-up-cover.jpeg);
+}
