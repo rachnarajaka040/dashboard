@@ -43,7 +43,38 @@ export default {
           title: 'Login',
           type: 'item',
           url: '/application/login',
-          target: true
+
+       
+        },
+        
+        {
+          id: 'datatable',
+          title: 'Adversement Table',
+          type: 'item',
+          url: '/tabledata',
+         
+        },
+        {
+          id: 'Web Data',
+          title: 'Web Table',
+          type: 'item',
+          url: '/Webdata',
+        
+        },
+        {
+          id: 'Web Data',
+          title: 'Web Advertisement',
+          type: 'item',
+          url: '/webAdvertisement',
+         
+        },
+        {
+          id: 'addversement',
+          title: 'App Adversement',
+          type: 'item',
+          url: '/Add_Advertisement',
+         
+
         }
       ]
     }

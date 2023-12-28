@@ -1,0 +1,11 @@
+.formacontainer{
+    display:"flex";
+     margin:"20rem"!important;
+      margin-right:"20rem"!important;
+      margin-top:"2rem"!important;
+       flex-direction:"column";
+       justify-content: center;
+       align-items: center;
+       padding: 2rem;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
