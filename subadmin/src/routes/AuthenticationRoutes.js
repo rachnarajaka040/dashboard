@@ -8,7 +8,7 @@ import MinimalLayout from 'layout/MinimalLayout';
 const AuthLogin = Loadable(lazy(() => import('../views/Login')));
 
 const AuthenticationRoutes = {
-  path: '/',
+  route: '/',
   element: <AuthLogin />,
   children: [
     {

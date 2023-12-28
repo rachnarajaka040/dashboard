@@ -42,8 +42,8 @@ export default {
           id: 'login-1',
           title: 'Login',
           type: 'item',
-          url: '/application/login',
-          target: true
+          url: '/application/login'
+          // Remove the target property to open in the same tab
         }
       ]
     }

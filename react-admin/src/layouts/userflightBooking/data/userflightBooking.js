@@ -116,7 +116,7 @@ export default function data() {
       address: <MDBox ml={-1}>{data.airlineDetails.AirlineName || "No Data"}</MDBox>,
       id: <MDBox ml={-1}>{data.origin || "No Data"}</MDBox>,
       amount: <MDBox ml={-1}>{data.destination || "No Data"}</MDBox>,
-      person: <MDBox ml={-1}>{data.passengerDetails[0].gender || "No Data"}</MDBox>,
+      // person: <MDBox ml={-1}>{data.passengerDetails[0].gender || "No Data"}</MDBox>,
     })),
   };
 }

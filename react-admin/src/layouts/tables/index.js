@@ -32,6 +32,7 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
 import subAdmin from "layouts/tables/data/subAdmin";
+import MDInput from "components/MDInput";
 // import agentRequest from "layouts/tables/data/agentRequest";
 function Tables() {
   const { columns, rows } = authorsTableData();
@@ -60,13 +61,21 @@ function Tables() {
                 <MDTypography variant="h6" color="white">
                   Agent Table
                 </MDTypography>
+                {/* <MDBox pr={1}>
+                  <MDInput
+                    label="Search here"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </MDBox> */}
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
                   table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
+                  isSorted={true}
+                  entriesPerPage={true}
+                  showTotalEntries={true}
+                  canSearch={true}
                   noEndBorder
                 />
               </MDBox>
@@ -91,9 +100,9 @@ function Tables() {
               <MDBox pt={3}>
                 <DataTable
                   table={{ columns: rColumns, rows: rRows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
+                  isSorted={true}
+                  entriesPerPage={true}
+                  showTotalEntries={true}
                   noEndBorder
                 />
               </MDBox>
@@ -118,9 +127,9 @@ function Tables() {
               <MDBox pt={3}>
                 <DataTable
                   table={{ columns: sColumns, rows: sRows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
+                  isSorted={true}
+                  entriesPerPage={true}
+                  showTotalEntries={true}
                   noEndBorder
                 />
               </MDBox>

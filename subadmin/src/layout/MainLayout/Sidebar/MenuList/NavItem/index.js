@@ -30,7 +30,7 @@ const NavItem = ({ item, level }) => {
   }
   let listItemProps = { component: Link, to: item.url };
   if (item.external) {
-    listItemProps = { component: 'a', href: item.url };
+    listItemProps = { component: Link, to: item.url };
   }
 
   return (
