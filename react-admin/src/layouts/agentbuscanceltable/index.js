@@ -32,13 +32,13 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
 import subAdmin from "layouts/tables/data/subAdmin";
-import buscancel from "./data/buscancel";
+import AgentsBusCancel from "./data/buscancel";
 function AgentbusCancel() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
   const { columns: rColumns, rows: rRows } = usersTableData();
   const { columns: sColumns, rows: sRows } = subAdmin();
-  const { columns: aColumns, rows: aRows } = buscancel();
+  // const { columns: aColumns, rows: aRows } = buscancel();
 
   return (
     <DashboardLayout>
@@ -47,7 +47,7 @@ function AgentbusCancel() {
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -60,15 +60,16 @@ function AgentbusCancel() {
                 <MDTypography variant="h6" color="white">
                   Agent bus Cancel Request
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: aColumns, rows: aRows }}
                   isSorted={true}
                   entriesPerPage={true}
                   showTotalEntries={true}
                   noEndBorder
-                />
+                /> */}
+                <AgentsBusCancel />
               </MDBox>
             </Card>
           </Grid>

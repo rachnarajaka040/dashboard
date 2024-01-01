@@ -51,7 +51,7 @@ function Agent() {
       <Card>
         <MDBox
           variant="gradient"
-          bgColor="info"
+          style={{ backgroundColor: "#21325D" }}
           borderRadius="lg"
           coloredShadow="info"
           mx={2}
@@ -113,7 +113,7 @@ function Agent() {
                   component={Link}
                   to="/adminlogin"
                   variant="button"
-                  color="info"
+                  style={{ backgroundColor: "#21325D", color: "white" }}
                   fontWeight="medium"
                   textGradient
                 >
