@@ -133,9 +133,9 @@ function Cover() {
       } else {
         if (response.status === 409) {
           alert("Agent with this username or email already exists!");
-          console.error("SubAdmin already exist:.", response.statusText);
+          console.error("Admin already exist:.", response.statusText);
         } else {
-          alert("Failed to create subadmin:!");
+          alert("Failed to create admin:!");
           console.error("Failed to create subadmin:", response.statusText);
         }
       }
