@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Copyright 2023 skytrails (https://www.creative-tim.com)
 
 Coded by www.creative-tim.com
 
@@ -31,10 +31,10 @@ import DataTable from "examples/Tables/DataTable";
 import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
-import advertiseMent from "./data/advertiseMent";
+import Advertisement from "./data/advertiseMent";
 
 function AddvertiseMent() {
-  const { columns: aColumns, rows: aRows } = advertiseMent();
+  // const { columns: aColumns, rows: aRows } = advertiseMent();
 
   return (
     <DashboardLayout>
@@ -43,7 +43,7 @@ function AddvertiseMent() {
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -56,15 +56,16 @@ function AddvertiseMent() {
                 <MDTypography variant="h6" color="white">
                   Advertisment
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: aColumns, rows: aRows }}
                   isSorted={true}
                   entriesPerPage={true}
                   showTotalEntries={true}
                   noEndBorder
-                />
+                /> */}
+                <Advertisement />
               </MDBox>
             </Card>
           </Grid>

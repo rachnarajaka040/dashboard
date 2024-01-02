@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Copyright 2023 skytrails (https://www.creative-tim.com)
 
 Coded by www.creative-tim.com
 
@@ -80,6 +80,7 @@ import FixedDeparture from "layouts/authentication/fixed-Departure/FixedDepartur
 import SubAdmin from "layouts/authentication/sub-admin";
 import Admin from "layouts/authentication/admin";
 import Event from "layouts/authentication/event";
+import AddMarkup from "layouts/authentication/Markup";
 //import BusCancel from "layouts/agentbuscanceltable";
 import AgentFlightCancel from "layouts/agentflightcanceltable";
 import AgentHotelCancel from "layouts/agenthotelcanceltable";
@@ -100,10 +101,10 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import AddvertiseMentForm from "layouts/authentication/add-addvertisement";
 const routes = [
   {
-    type: "collapse",
-    name: "Sign In",
+    // type: "collapse",
+    // name: "Sign In",
     key: "sign-In",
-    icon: <Icon fontSize="small">assignment</Icon>,
+    // icon: <Icon fontSize="small">assignment</Icon>,
     route: "/",
     component: <SignUp />,
   },
@@ -323,14 +324,7 @@ const routes = [
     route: "/agenthotelbooking", // Route path for FlightTables
     component: <AgentHotelBooking />, // FlightTables component
   },
-  {
-    type: "collapse",
-    name: "User Markup Amount",
-    key: "markup",
-    icon: <AccountBalanceIcon fontSize="small" />,
-    // route: "/",
-    // component: <Tables />,
-  },
+
   {
     type: "collapse",
     name: "Edit Holiday Package",
@@ -371,19 +365,27 @@ const routes = [
     component: <Event />,
   },
   {
+    type: "collapse",
+    name: "Add markup",
+    key: "markup",
+    icon: <GroupAddIcon fontSize="small" />,
+    route: "/authentication/addmarkup",
+    component: <AddMarkup />,
+  },
+  {
     key: "addvertise",
 
     route: "/authentication/addadvertisement",
     component: <AddvertiseMentForm />,
   },
-  {
-    type: "collapse",
-    name: "Billing",
-    key: "billing",
-    icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/billing",
-    component: <Billing />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Billing",
+  //   key: "billing",
+  //   icon: <Icon fontSize="small">receipt_long</Icon>,
+  //   route: "/billing",
+  //   component: <Billing />,
+  // },
   // {
   //   type: "collapse",
   //   name: "RTL",
@@ -392,14 +394,14 @@ const routes = [
   //   route: "/rtl",
   //   component: <RTL />,
   // },
-  {
-    type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Notifications",
+  //   key: "notifications",
+  //   icon: <Icon fontSize="small">notifications</Icon>,
+  //   route: "/notifications",
+  //   component: <Notifications />,
+  // },
   {
     type: "collapse",
     name: "Profile",

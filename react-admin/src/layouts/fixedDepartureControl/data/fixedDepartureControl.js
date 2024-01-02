@@ -6,7 +6,7 @@
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Copyright 2023 skytrails (https://www.creative-tim.com)
 
 Coded by www.creative-tim.com
 
@@ -26,7 +26,7 @@ import { useEffect, useState } from "react";
 // Images
 import team2 from "assets/images/team-2.jpg";
 import { Button } from "@mui/material";
-
+import { List, ListItem, Typography, Box } from "@mui/material";
 export default function data() {
   const Author = ({ image, name, email }) => (
     <MDBox display="flex" aligndatas="center" lineHeight={1}>
@@ -75,13 +75,14 @@ export default function data() {
   };
   return {
     columns: [
-      { Header: "agents", accessor: "author", width: "30%", align: "left" },
-      { Header: "No of Seat", accessor: "agecncyname", width: "30%", align: "center" },
-      { Header: "phone", accessor: "classification", align: "left", width: "40%" },
+      { Header: "agents", accessor: "author", align: "left" },
+      { Header: "No of Seat", accessor: "agecncyname", align: "left" },
+      { Header: "phone", accessor: "classification", align: "left" },
       { Header: "user type", accessor: "address", align: "left" },
 
       { Header: "otp verified", accessor: "seat", align: "center" },
-      { Header: "reason", accessor: "bustype", align: "center" },
+      { Header: "Final Sale Price", accessor: "bustype", align: "center" },
+      { Header: "Passenger", accessor: "passenger", align: "center" },
       { Header: "update", accessor: "update", align: "center" },
     ],
 
@@ -106,10 +107,38 @@ export default function data() {
       address: <MDBox ml={-1}>{data?.soldTo}</MDBox>,
 
       bustype: <MDBox ml={-1}>{data?.finalSalePrice}</MDBox>,
+      passenger: (
+        <MDBox ml={-1}>
+          <Box component="td">
+            {data?.names.map((itemName, i) => (
+              <List key={i}>
+                <ListItem>
+                  <Typography style={{ fontSize: "14px" }}>{itemName?.title}</Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography style={{ fontSize: "14px" }}>{itemName?.firstName}</Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography style={{ fontSize: "14px" }}>{itemName?.lastName}</Typography>
+                </ListItem>
+
+                <ListItem>
+                  <Typography style={{ fontSize: "14px" }}>{itemName?.passport}</Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography style={{ fontSize: "14px" }}>{itemName?.passportExpiry}</Typography>
+                </ListItem>
+              </List>
+            ))}
+          </Box>
+        </MDBox>
+      ),
       seat: <MDBox ml={-1}>{data?.status || "No Data"}</MDBox>,
       update: (
-        <MDBox ml={-1}>
-          <Button onClick={() => handleUpdate(data?.flightId, data?.numberOfSeats)}>Update</Button>
+        <MDBox>
+          <div style={{ width: "150px" }}>
+            <Button sx={{ border: "1px solid #E73C33", color: "black" }}>Update</Button>
+          </div>
         </MDBox>
       ),
     })),
