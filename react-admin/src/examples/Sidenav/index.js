@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Copyright 2023 skytrails (https://www.creative-tim.com)
 
 Coded by www.creative-tim.com
 
@@ -203,7 +203,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           color={sidenavColor}
           fullWidth
         >
-          upgrade to pro
+          dashboard
         </MDButton>
       </MDBox>
     </SidenavRoot>

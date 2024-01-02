@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Copyright 2023 skytrails (https://www.creative-tim.com)
 
 Coded by www.creative-tim.com
 
@@ -99,9 +99,9 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { to: "/", name: "Creative Tim" },
+  company: { to: "/", name: "skytrails" },
   links: [
-    { to: "/", name: "Creative Tim" },
+    { to: "/", name: "skytrails" },
     { to: "/", name: "About Us" },
     { to: "/", name: "Blog" },
     { to: "/", name: "License" },
