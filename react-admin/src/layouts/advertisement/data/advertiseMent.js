@@ -1,35 +1,34 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 /**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+ * =========================================================
+ * Material Dashboard 2 React - v2.2.0
+ * =========================================================
+ *
+ * Product Page: https://www.creative-tim.com/product/material-dashboard-react
+ * Copyright 2023 Creative Tim (https://www.creative-tim.com)
+ *
+ * Coded by www.creative-tim.com
+ *
+ * =========================================================
+ *
+ * The above copyright notice and this permission notice shall be included in all copies
+ * or substantial portions of the Software.
+ */
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// Material Dashboard 2 React components
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Table, TableHead, TableBody, TableRow, TableCell, TextField } from "@mui/material";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
-import MDBadge from "components/MDBadge";
-import axios from "axios";
 import { apiURL } from "Constants/Constant";
-import { useEffect, useState } from "react";
-// Images
-import team2 from "assets/images/team-2.jpg";
-import { Button } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Icon from "@mui/material/Icon";
 
-export default function data() {
+export default function Advertisement() {
   const Author = ({ image, name, email }) => (
-    <MDBox display="flex" aligndatas="center" lineHeight={1}>
+    <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
       <MDBox ml={2} lineHeight={1}>
         <MDTypography display="block" variant="button" fontWeight="medium">
@@ -40,68 +39,196 @@ export default function data() {
     </MDBox>
   );
 
-  const Job = ({ title, description }) => (
-    <MDBox lineHeight={1} textAlign="left">
-      <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
-        {title}
-      </MDTypography>
-      <MDTypography variant="caption">{description}</MDTypography>
-    </MDBox>
-  );
-  const [userData, setData] = useState([]);
+  const [userData, setUserData] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUserData = async () => {
       try {
-        const response = await axios.get(`${apiURL.baseURL}/skyTrails/api/getadvertisement`);
-        setData(response?.data?.result.docs);
-        // setLoading(false);
+        const response = await axios.get(`${apiURL.baseURL}/skyTrails/api/getadvertisement`, {
+          params: {
+            page: currentPage,
+            size: 10,
+          },
+        });
+        setUserData(response.data.result.docs);
+        setTotalPages(response.data.result.totalPages);
+        setFilteredData(response.data.result.docs);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        // setLoading(false);
+        console.error("Error fetching User bookings:", error);
       }
     };
 
-    fetchData();
-  }, []);
-  // const handleUpdate = (flightId, seat) => {
-  //   const payload = {
-  //     _id: flightId,
-  //     noOfBooking: seat,
-  //   };
+    fetchUserData();
+  }, [currentPage]);
 
-  //   userApi.updateFlightBookingSeat(payload);
-  // };
-  return {
-    columns: [
-      { Header: "Name", accessor: "author", width: "30%", align: "center" },
-      { Header: "Content", accessor: "agecncyname", width: "30%", align: "center" },
-      { Header: "Start Date", accessor: "classification", align: "left", width: "40%" },
-      { Header: "End Date", accessor: "address", align: "left" },
-
-      { Header: "Remaining Days", accessor: "bustype", align: "center" },
-    ],
-
-    rows: userData.map((data) => ({
-      author: <Author image={data.image} name={data.title || "No Data"} />,
-      agecncyname: (
-        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data?.content}
-        </MDTypography>
-      ),
-      classification: (
-        <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
-          {data?.startDate}
-        </MDTypography>
-      ),
-      address: <MDBox ml={-1}>{data?.endDate}</MDBox>,
-
-      bustype: <MDBox ml={-1}>{data?.remainingDays}</MDBox>,
-      seat: <MDBox ml={-1}>{data?.status || "No Data"}</MDBox>,
-      // update: (
-      //   <MDBox ml={-1}>
-      //     <Button onClick={() => handleUpdate(data?.flightId, data?.numberOfSeats)}>Update</Button>
-      //   </MDBox>
-      // ),
-    })),
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
+
+  const handleSearch = (e) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+
+    const filtered = userData.filter((item) => {
+      const usernameMatch = item.title?.toLowerCase().includes(term) || false;
+
+      const mobileNumberMatch = item.startDate.toLowerCase().includes(term) || false;
+
+      return usernameMatch || mobileNumberMatch;
+    });
+
+    setFilteredData(filtered);
+  };
+
+  const renderRows = () => {
+    if (filteredData.length === 0) {
+      return (
+        <TableRow>
+          <TableCell colSpan={13} style={{ textAlign: "center" }}>
+            No results found.
+          </TableCell>
+        </TableRow>
+      );
+    }
+    return filteredData.map((data, index) => (
+      <TableRow key={index}>
+        <TableCell style={{ width: "33%" }}>
+          <Author image={data.image} name={data.title} />
+        </TableCell>
+        <TableCell style={{ width: "33%" }}>
+          <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+            {data.content || "No Data"}
+          </MDTypography>
+        </TableCell>
+        <TableCell style={{ width: "33%" }}>
+          <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+            {data.startDate || "No Data"}
+          </MDTypography>
+        </TableCell>
+        <TableCell style={{ width: "33%" }}>
+          <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+            {data.endDate || "No Data"}
+          </MDTypography>
+        </TableCell>
+        <TableCell style={{ width: "33%" }}>
+          <MDTypography component="div" variant="caption" color="text" fontWeight="medium">
+            {data.remainingDays || "No Data"}
+          </MDTypography>
+        </TableCell>
+      </TableRow>
+    ));
+  };
+
+  const Pagination = () => {
+    const buttonStyle = {
+      backgroundColor: "#21325D",
+      borderRadius: "50%",
+      width: "40px",
+      height: "40px",
+      marginLeft: "4px",
+      marginRight: "4px",
+      color: "white",
+    };
+    const buttonStyles = {
+      backgroundColor: "#21325D",
+      borderRadius: "50%",
+      width: "40px",
+      height: "40px",
+      marginLeft: "4px",
+      marginRight: "4px",
+      color: "white",
+    };
+
+    const visiblePages = 5;
+
+    const getVisiblePageNumbers = () => {
+      const startPage = Math.max(1, currentPage - Math.floor(visiblePages / 2));
+      const endPage = Math.min(totalPages, startPage + visiblePages - 1);
+
+      return Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
+    };
+
+    return (
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 16, marginBottom: 10 }}>
+        <IconButton
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          style={buttonStyle}
+        >
+          <Icon sx={{ fontWeight: "bold" }}>chevron_left</Icon>
+        </IconButton>
+        {getVisiblePageNumbers().map((pageNumber, index) => (
+          <IconButton
+            key={index + 1}
+            onClick={() => handlePageChange(pageNumber)}
+            disabled={currentPage === pageNumber}
+            style={{
+              ...buttonStyle,
+              backgroundColor: currentPage === pageNumber ? "#21325D" : "#E0E0E0",
+            }}
+          >
+            {pageNumber}
+          </IconButton>
+        ))}
+        {totalPages > visiblePages && currentPage < totalPages - 2 && (
+          <span style={{ lineHeight: "40px", marginLeft: "4px", marginRight: "4px" }}>...</span>
+        )}
+        {totalPages > visiblePages && currentPage < totalPages - 1 && (
+          <IconButton onClick={() => handlePageChange(totalPages)} style={buttonStyles}>
+            {totalPages}
+          </IconButton>
+        )}
+        <IconButton
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          style={buttonStyle}
+        >
+          <Icon sx={{ fontWeight: "bold" }}>chevron_right</Icon>
+        </IconButton>
+      </div>
+    );
+  };
+
+  return (
+    <MDBox>
+      <MDBox
+        mx={2}
+        mt={-7}
+        py={2}
+        px={2}
+        variant="gradient"
+        bgColor="info"
+        borderRadius="lg"
+        coloredShadow="info"
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <MDTypography variant="h6" color="white">
+          Advertisement Table
+        </MDTypography>
+        <MDBox sx={{ color: "white" }}>
+          <TextField label="Search" variant="outlined" onChange={handleSearch} value={searchTerm} />
+        </MDBox>
+      </MDBox>
+
+      <Table>
+        <TableRow>
+          <TableCell>Title</TableCell>
+          <TableCell>Content</TableCell>
+          <TableCell>Start Date</TableCell>
+          <TableCell>End Date</TableCell>
+          <TableCell>Remaining Days</TableCell>
+        </TableRow>
+
+        <TableBody>{renderRows()}</TableBody>
+      </Table>
+
+      <Pagination />
+    </MDBox>
+  );
 }

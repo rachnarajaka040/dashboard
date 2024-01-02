@@ -140,7 +140,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
         {" "}
         <NotificationItem icon={<Icon>group_add</Icon>} title="Add Addvertisement" />
       </Link>
-
+      <Link to="/authentication/addmarkup">
+        {" "}
+        <NotificationItem icon={<Icon>group_add</Icon>} title="Add Markup" />
+      </Link>
       <NotificationItem icon={<Icon>account_circle</Icon>} title="My Account" />
       <Link to="/">
         <NotificationItem icon={<Icon>logout</Icon>} title="Logout" />

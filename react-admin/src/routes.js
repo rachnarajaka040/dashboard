@@ -80,6 +80,7 @@ import FixedDeparture from "layouts/authentication/fixed-Departure/FixedDepartur
 import SubAdmin from "layouts/authentication/sub-admin";
 import Admin from "layouts/authentication/admin";
 import Event from "layouts/authentication/event";
+import AddMarkup from "layouts/authentication/Markup";
 //import BusCancel from "layouts/agentbuscanceltable";
 import AgentFlightCancel from "layouts/agentflightcanceltable";
 import AgentHotelCancel from "layouts/agenthotelcanceltable";
@@ -323,14 +324,7 @@ const routes = [
     route: "/agenthotelbooking", // Route path for FlightTables
     component: <AgentHotelBooking />, // FlightTables component
   },
-  {
-    type: "collapse",
-    name: "User Markup Amount",
-    key: "markup",
-    icon: <AccountBalanceIcon fontSize="small" />,
-    // route: "/",
-    // component: <Tables />,
-  },
+
   {
     type: "collapse",
     name: "Edit Holiday Package",
@@ -369,6 +363,14 @@ const routes = [
     icon: <GroupAddIcon fontSize="small" />,
     route: "/authentication/event",
     component: <Event />,
+  },
+  {
+    type: "collapse",
+    name: "Add markup",
+    key: "markup",
+    icon: <GroupAddIcon fontSize="small" />,
+    route: "/authentication/addmarkup",
+    component: <AddMarkup />,
   },
   {
     key: "addvertise",
