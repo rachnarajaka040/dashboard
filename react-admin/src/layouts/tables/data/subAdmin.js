@@ -31,9 +31,8 @@ export default function SubAdmindata() {
   const [userStatuses, setUserStatuses] = useState({
     // Example structure, replace it with your actual data
     userId1: "active",
-    userId2: "inactive",
-    userId1: "blocked",
-    userId2: "pending",
+    userId2: "blocked",
+    userId3: "delete",
     // ...
   });
 
@@ -122,22 +121,18 @@ export default function SubAdmindata() {
                 marginRight: "5px",
               }}
             >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="pending">Pending</option>
-              <option value="block">Block</option>
+              <option value="active">ACTIVE</option>
+              <option value="delete">DELETE</option>
+              <option value="block">BLOCKED</option>
             </select>
             {userStatuses[data._id] === "active" && (
-              <MDBadge badgeContent="Active" color="success" variant="gradient" size="sm" />
-            )}
-            {userStatuses[data._id] === "inactive" && (
-              <MDBadge badgeContent="Inactive" color="error" variant="gradient" size="sm" />
-            )}
-            {userStatuses[data._id] === "pending" && (
-              <MDBadge badgeContent="Pending" color="warning" variant="gradient" size="sm" />
+              <MDBadge badgeContent="ACTIVE" color="success" variant="gradient" size="sm" />
             )}
             {userStatuses[data._id] === "blocked" && (
-              <MDBadge badgeContent="Blocked" color="info" variant="gradient" size="sm" />
+              <MDBadge badgeContent="BLOCKED" color="error" variant="gradient" size="sm" />
+            )}
+            {userStatuses[data._id] === "delete" && (
+              <MDBadge badgeContent="DELETE" color="warning" variant="gradient" size="sm" />
             )}
           </MDBox>
         </TableCell>
