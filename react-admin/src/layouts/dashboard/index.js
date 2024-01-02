@@ -58,11 +58,11 @@ function Dashboard() {
                 icon="flights"
                 title="Flights"
                 count={dashboardData.NoOfFlightBookings}
-                // percentage={{
-                //   color: "success",
-                //   amount: "+55%",
-                //   label: "than lask week",
-                // }}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
               />
             </MDBox>
           </Grid>
@@ -73,11 +73,11 @@ function Dashboard() {
                 icon="hotel"
                 title="Hotels"
                 count={dashboardData?.NoOfHotelBookings}
-                // percentage={{
-                //   color: "success",
-                //   amount: "+3%",
-                //   label: "than last month",
-                // }}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
               />
             </MDBox>
           </Grid>
@@ -88,11 +88,11 @@ function Dashboard() {
                 icon={<DirectionsBusIcon />}
                 title="Bus"
                 count={dashboardData?.NoOfBusBookings}
-                // percentage={{
-                //   color: "success",
-                //   amount: "+1%",
-                //   label: "than yesterday",
-                // }}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
               />
             </MDBox>
           </Grid>

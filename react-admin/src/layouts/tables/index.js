@@ -28,17 +28,17 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
+import AgentDataTable from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
-import usersTableData from "layouts/tables/data/usersTableData";
-import subAdmin from "layouts/tables/data/subAdmin";
+import Data from "layouts/tables/data/usersTableData";
+import SubAdmindata from "layouts/tables/data/subAdmin";
 import MDInput from "components/MDInput";
 // import agentRequest from "layouts/tables/data/agentRequest";
 function Tables() {
-  const { columns, rows } = authorsTableData();
+  // const { columns: rColumns, rows: rRows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
-  const { columns: rColumns, rows: rRows } = usersTableData();
-  const { columns: sColumns, rows: sRows } = subAdmin();
+  // const { columns: rColumns, rows: rRows } = usersTableData();
+  //const { columns: sColumns, rows: sRows } = subAdmin();
   // const { columns: aColumns, rows: aRows } = agentRequest();
 
   return (
@@ -48,7 +48,7 @@ function Tables() {
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -58,32 +58,26 @@ function Tables() {
                 borderRadius="lg"
                 coloredShadow="info"
               >
+                {" "}
                 <MDTypography variant="h6" color="white">
                   Agent Table
                 </MDTypography>
-                {/* <MDBox pr={1}>
-                  <MDInput
-                    label="Search here"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                </MDBox> */}
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
-                  table={{ columns, rows }}
+                {/* <DataTable
+                  table={{ columns: rColumns, rows: rRows }}
                   isSorted={true}
-                  entriesPerPage={true}
-                  showTotalEntries={true}
-                  canSearch={true}
+                  // entriesPerPage={false}
+                  // showTotalEntries={false}
                   noEndBorder
-                />
+                /> */}
+                <AgentDataTable />
               </MDBox>
             </Card>
           </Grid>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -96,21 +90,22 @@ function Tables() {
                 <MDTypography variant="h6" color="white">
                   User Table
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: rColumns, rows: rRows }}
                   isSorted={true}
-                  entriesPerPage={true}
-                  showTotalEntries={true}
+                  // entriesPerPage={false}
+                  // showTotalEntries={false}
                   noEndBorder
-                />
+                /> */}
+                <Data />
               </MDBox>
             </Card>
           </Grid>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -123,19 +118,20 @@ function Tables() {
                 <MDTypography variant="h6" color="white">
                   SubAdmin Table
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: sColumns, rows: sRows }}
                   isSorted={true}
                   entriesPerPage={true}
                   showTotalEntries={true}
                   noEndBorder
-                />
+                /> */}
+                <SubAdmindata />
               </MDBox>
             </Card>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Card>
               <MDBox
                 mx={2}
@@ -154,14 +150,14 @@ function Tables() {
               <MDBox pt={3}>
                 <DataTable
                   table={{ columns: pColumns, rows: pRows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
+                  isSorted={true}
+                  entriesPerPage={true}
+                  showTotalEntries={true}
                   noEndBorder
                 />
               </MDBox>
             </Card>
-          </Grid>
+          </Grid> */}
         </Grid>
       </MDBox>
       <Footer />

@@ -53,7 +53,7 @@ function Admin() {
         <Card>
           <MDBox
             variant="gradient"
-            bgColor="info"
+            style={{ backgroundColor: "#21325D" }}
             borderRadius="lg"
             coloredShadow="success"
             mx={2}
@@ -83,7 +83,11 @@ function Admin() {
 
               <MDBox mt={2} mb={1}>
                 <Link to="/dashboard">
-                  <MDButton variant="gradient" color="info" fullWidth>
+                  <MDButton
+                    variant="gradient"
+                    fullWidth
+                    style={{ backgroundColor: "#21325D", color: "white" }}
+                  >
                     create agent
                   </MDButton>
                 </Link>

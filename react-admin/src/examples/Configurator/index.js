@@ -138,9 +138,8 @@ function Configurator() {
         px={3}
       >
         <MDBox>
-          <MDTypography variant="h5">Material UI Configurator</MDTypography>
           <MDTypography variant="body2" color="text">
-            See our dashboard options.
+            See our dashboard more options.
           </MDTypography>
         </MDBox>
 
@@ -288,17 +287,16 @@ function Configurator() {
         <MDBox mt={3} mb={2}>
           <MDButton
             component={Link}
-            href=""
-            target="_blank"
+            href="/"
             rel="noreferrer"
             color={darkMode ? "light" : "dark"}
             variant="outlined"
             fullWidth
           >
-            view documentation
+            view details
           </MDButton>
         </MDBox>
-        <MDBox display="flex" justifyContent="center">
+        {/* <MDBox display="flex" justifyContent="center">
           <GitHubButton
             href=""
             data-icon="octicon-star"
@@ -308,7 +306,7 @@ function Configurator() {
           >
             Star
           </GitHubButton>
-        </MDBox>
+        </MDBox> */}
         <MDBox mt={2} textAlign="center">
           <MDBox mb={0.5}>
             <MDTypography variant="h6">Thank you for sharing!</MDTypography>

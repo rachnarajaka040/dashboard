@@ -32,13 +32,13 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
 import subAdmin from "layouts/tables/data/subAdmin";
-import userhotelBooking from "./data/userhotelBooking";
+import UsersHotelBookings from "./data/userhotelBooking";
 function UserHotelBooking() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
   const { columns: rColumns, rows: rRows } = usersTableData();
   const { columns: sColumns, rows: sRows } = subAdmin();
-  const { columns: aColumns, rows: aRows } = userhotelBooking();
+  // const { columns: aColumns, rows: aRows } = userhotelBooking();
 
   return (
     <DashboardLayout>
@@ -47,7 +47,7 @@ function UserHotelBooking() {
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -60,15 +60,16 @@ function UserHotelBooking() {
                 <MDTypography variant="h6" color="white">
                   User Hotel Booking
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: aColumns, rows: aRows }}
                   isSorted={true}
                   entriesPerPage={true}
                   showTotalEntries={true}
                   noEndBorder
-                />
+                /> */}
+                <UsersHotelBookings />
               </MDBox>
             </Card>
           </Grid>

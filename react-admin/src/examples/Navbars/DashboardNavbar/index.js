@@ -142,7 +142,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
       </Link>
 
       <NotificationItem icon={<Icon>account_circle</Icon>} title="My Account" />
-      <Link to="/adminlogin">
+      <Link to="/">
         <NotificationItem icon={<Icon>logout</Icon>} title="Logout" />
       </Link>
     </Menu>

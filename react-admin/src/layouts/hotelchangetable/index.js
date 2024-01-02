@@ -32,13 +32,13 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
 import subAdmin from "layouts/tables/data/subAdmin";
-import hotelchange from "./data/hotelchange";
+import AgentsHotelChange from "./data/hotelchange";
 function HotelChange() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
   const { columns: rColumns, rows: rRows } = usersTableData();
   const { columns: sColumns, rows: sRows } = subAdmin();
-  const { columns: aColumns, rows: aRows } = hotelchange();
+  // const { columns: aColumns, rows: aRows } = hotelchange();
 
   return (
     <DashboardLayout>
@@ -47,7 +47,7 @@ function HotelChange() {
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -60,15 +60,16 @@ function HotelChange() {
                 <MDTypography variant="h6" color="white">
                   Agent Hotel Change Request
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: aColumns, rows: aRows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
+                  isSorted={true}
+                  entriesPerPage={true}
+                  showTotalEntries={true}
                   noEndBorder
-                />
+                /> */}
+                <AgentsHotelChange />
               </MDBox>
             </Card>
           </Grid>

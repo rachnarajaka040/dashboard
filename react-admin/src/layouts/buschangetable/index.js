@@ -32,13 +32,13 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
 import subAdmin from "layouts/tables/data/subAdmin";
-import buschange from "./data/buschange";
+import UserBusChange from "./data/buschange";
 function BusChange() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
   const { columns: rColumns, rows: rRows } = usersTableData();
   const { columns: sColumns, rows: sRows } = subAdmin();
-  const { columns: aColumns, rows: aRows } = buschange();
+  // const { columns: aColumns, rows: aRows } = buschange();
 
   return (
     <DashboardLayout>
@@ -47,28 +47,15 @@ function BusChange() {
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
-              <MDBox
-                mx={2}
-                mt={-3}
-                py={3}
-                px={2}
-                variant="gradient"
-                bgColor="info"
-                borderRadius="lg"
-                coloredShadow="info"
-              >
-                <MDTypography variant="h6" color="white">
-                  Agent Bus Change Request
-                </MDTypography>
-              </MDBox>
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: aColumns, rows: aRows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
+                  isSorted={true}
+                  entriesPerPage={true}
+                  showTotalEntries={true}
                   noEndBorder
-                />
+                /> */}
+                <UserBusChange />
               </MDBox>
             </Card>
           </Grid>

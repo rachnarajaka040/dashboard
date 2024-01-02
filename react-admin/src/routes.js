@@ -104,7 +104,7 @@ const routes = [
     name: "Sign In",
     key: "sign-In",
     icon: <Icon fontSize="small">assignment</Icon>,
-    route: "/adminlogin",
+    route: "/",
     component: <SignUp />,
   },
   {
@@ -134,7 +134,7 @@ const routes = [
   {
     type: "collapse",
     name: <AgentCancelRequestDropdown />,
-    key: "tables",
+    key: "table",
     icon: <CancelIcon fontSize="small" />,
   },
 

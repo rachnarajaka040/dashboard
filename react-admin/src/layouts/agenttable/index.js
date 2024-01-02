@@ -32,13 +32,13 @@ import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 import usersTableData from "layouts/tables/data/usersTableData";
 import subAdmin from "layouts/tables/data/subAdmin";
-import agentRequest from "./data/agentRequest";
+import AgentData from "./data/agentRequest";
 function AgentTables() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
   const { columns: rColumns, rows: rRows } = usersTableData();
   const { columns: sColumns, rows: sRows } = subAdmin();
-  const { columns: aColumns, rows: aRows } = agentRequest();
+  // const { columns: aColumns, rows: aRows } = agentRequest();
 
   return (
     <DashboardLayout>
@@ -47,7 +47,7 @@ function AgentTables() {
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
-              <MDBox
+              {/* <MDBox
                 mx={2}
                 mt={-3}
                 py={3}
@@ -60,15 +60,16 @@ function AgentTables() {
                 <MDTypography variant="h6" color="white">
                   Agents Request
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox pt={3}>
-                <DataTable
+                {/* <DataTable
                   table={{ columns: aColumns, rows: aRows }}
                   isSorted={true}
                   entriesPerPage={true}
                   showTotalEntries={true}
                   noEndBorder
-                />
+                /> */}
+                <AgentData />
               </MDBox>
             </Card>
           </Grid>
