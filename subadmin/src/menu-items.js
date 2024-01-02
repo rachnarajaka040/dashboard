@@ -43,7 +43,7 @@ export default {
           title: 'Login',
           type: 'item',
 
-          url: '/application/login',
+          url: '/',
 
        
         },

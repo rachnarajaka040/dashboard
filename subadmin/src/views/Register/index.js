@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import { Card, CardContent, Typography, Grid } from '@mui/material';
 
 // project import
-import FirebaseRegister from './FirebaseRegister';
+import Register from './Register';
 import { Link } from 'react-router-dom';
 
 // assets
@@ -60,7 +60,7 @@ const Register = () => {
                 </Grid>
               </Grid>
               <Grid item xs={12}>
-                <FirebaseRegister />
+                <Register />
               </Grid>
               <Grid container justifyContent="flex-start" sx={{ mt: theme.spacing(2), mb: theme.spacing(1) }}>
                 <Grid item>

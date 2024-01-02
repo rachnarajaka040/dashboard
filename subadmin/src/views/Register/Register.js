@@ -32,7 +32,7 @@ import Google from 'assets/images/social-google.svg';
 
 // ==============================|| FIREBASE REGISTER ||============================== //
 
-const FirebaseRegister = ({ ...rest }) => {
+const Register = ({ ...rest }) => {
   const theme = useTheme();
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(false);
@@ -182,4 +182,4 @@ const FirebaseRegister = ({ ...rest }) => {
   );
 };
 
-export default FirebaseRegister;
+export default Register;

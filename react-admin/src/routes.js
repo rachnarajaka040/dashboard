@@ -80,7 +80,7 @@ import FixedDeparture from "layouts/authentication/fixed-Departure/FixedDepartur
 import SubAdmin from "layouts/authentication/sub-admin";
 import Admin from "layouts/authentication/admin";
 import Event from "layouts/authentication/event";
-import AddMarkup from "layouts/authentication/Markup";
+import AddMarkup from "layouts/authentication/markup";
 //import BusCancel from "layouts/agentbuscanceltable";
 import AgentFlightCancel from "layouts/agentflightcanceltable";
 import AgentHotelCancel from "layouts/agenthotelcanceltable";
@@ -101,10 +101,10 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import AddvertiseMentForm from "layouts/authentication/add-addvertisement";
 const routes = [
   {
-    // type: "collapse",
-    // name: "Sign In",
+    type: "collapse",
+    name: "Sign In",
     key: "sign-In",
-    // icon: <Icon fontSize="small">assignment</Icon>,
+    icon: <Icon fontSize="small">assignment</Icon>,
     route: "/",
     component: <SignUp />,
   },

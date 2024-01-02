@@ -2,7 +2,6 @@ import React from 'react';
 
 import axios from 'axios';
 
-
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -23,12 +22,11 @@ import {
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
-import { Link } from 'react-router-dom';
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { apiURL } from '../../constants/constants';
-
+import { useNavigate } from 'react-router';
 
 // import Google from 'assets/images/social-google.svg';
 
@@ -37,7 +35,7 @@ import { apiURL } from '../../constants/constants';
 const LoginForm = ({ ...rest }) => {
   const theme = useTheme();
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const navigate = useNavigate();
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -46,7 +44,6 @@ const LoginForm = ({ ...rest }) => {
     event.preventDefault();
   };
 
-
   // //////////////////////////api integration////////////////////////////////
 
   const handleFormSubmit = async (values, { setErrors, setSubmitting }) => {
@@ -54,7 +51,7 @@ const LoginForm = ({ ...rest }) => {
       // Make a POST request to your login API endpoint
       const response = await axios.post(`${apiURL.baseURL}/skytrails/api/subAdmin/subAdminLogin`, {
         userName: values.username,
-        password: values.password 
+        password: values.password
       });
       console.log(response);
       console.log('Login success:', response.data);
@@ -63,7 +60,7 @@ const LoginForm = ({ ...rest }) => {
       console.log('Token:', token);
 
       sessionStorage.setItem('token', token);
-      window.location.href = '/dashboard/default';
+      navigate('/dashboard/default');
     } catch (error) {
       console.error('Login error:', error.response ? error.response.data : error.message);
       setErrors({ submit: 'Invalid username or password' });
@@ -71,7 +68,6 @@ const LoginForm = ({ ...rest }) => {
       setSubmitting(false);
     }
   };
-
 
   return (
     <>
@@ -85,9 +81,7 @@ const LoginForm = ({ ...rest }) => {
           username: Yup.string().max(255).required('Username is required'), // Update the validation for the new 'username' field
           password: Yup.string().max(255).required('Password is required')
         })}
-
         onSubmit={handleFormSubmit}
-
       >
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...rest}>
@@ -151,7 +145,6 @@ const LoginForm = ({ ...rest }) => {
             )}
 
             <Box mt={2}>
-
               <Button
                 color="primary"
                 disabled={isSubmitting}
@@ -163,7 +156,6 @@ const LoginForm = ({ ...rest }) => {
               >
                 Log In
               </Button>
-
             </Box>
           </form>
         )}

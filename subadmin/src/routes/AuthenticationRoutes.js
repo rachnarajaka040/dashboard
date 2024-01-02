@@ -5,22 +5,16 @@ import { lazy } from 'react';
 import Loadable from 'component/Loadable';
 import MinimalLayout from 'layout/MinimalLayout';
 
-
 const AuthLogin = Loadable(lazy(() => import('../views/Login')));
 
 const AuthenticationRoutes = {
-  route: '/',
+  path: 'application',
   element: <AuthLogin />,
   children: [
     {
-      path: '/application/login',
-
-    
-    
-
+      path: 'login',
       element: <MinimalLayout />
     }
-
   ]
 };
 
